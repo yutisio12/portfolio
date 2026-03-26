@@ -1,0 +1,11 @@
+- Checking registry.
+
+[31mSomething went wrong. Please check the error below for more details.[39m
+[31mIf the problem persists, please open an issue on GitHub.[39m
+
+[31mMessage:[39m
+[31mThe item at https://shadcn-vue.com/r/styles/default/icon.json was not found. It may not exist at the registry.[39m
+[31m
+Suggestion:[39m
+[31mCheck if the item name is correct and the registry URL is accessible.[39m
+

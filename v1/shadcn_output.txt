@@ -1,0 +1,24 @@
+
+
+[31mSomething went wrong. Please check the error below for more details.[39m
+[31mIf the problem persists, please open an issue on GitHub.[39m
+
+[31mError:[39m
+[31mInvalid components.json configuration in [36mF:\htdocs_kedua\portfolio\v1/components.json[31m:
+  - : Unrecognized key(s) in object: 'framework'[39m
+[31m
+Message:[39m
+[31m[
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "framework"
+    ],
+    "path": [],
+    "message": "Unrecognized key(s) in object: 'framework'"
+  }
+][39m
+[31m
+Suggestion:[39m
+[31mCheck your components.json file for syntax errors or invalid configuration. Run 'npx shadcn@latest init' to regenerate a valid configuration.[39m
+
