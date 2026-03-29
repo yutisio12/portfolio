@@ -1,0 +1,260 @@
+{
+  "theme": {
+    "background": "#000000",
+    "foreground": "#FFFFFF",
+    "primary": "#F97316",
+    "primary_foreground": "#000000",
+    "muted": "#111111",
+    "muted_foreground": "#94A3B8",
+    "card": "#0A0A0A",
+    "border": "#27272a"
+  },
+  "general": {
+    "loading": "Initializing Sequence...",
+    "experience_label": "YEARS OF EXPERIENCE",
+    "fallback_image": "https://placehold.co/400x400?text=404+Not+Found",
+    "section_01": "01 /",
+    "section_02": "02 /",
+    "section_03": "03 /",
+    "section_04": "04 /",
+    "section_05": "05 /",
+    "section_06": "06 /"
+  },
+  "profile": {
+    "name": "YUTISIO",
+    "title": "SENIOR ENGINEER",
+    "years_experience": "5+",
+    "bio_title": "THE 'WHY' BEHIND WHO I AM",
+    "bio_paragraphs": [
+      "When I was growing up, my parents, my teachers, all the authority figures would tell me to do certain things, but they would never explain why. This used to confuse my little brain. I could not articulate it back then, but I always felt a strong need to understand the reasoning behind things. Because I knew that is how we evolve our understanding, our knowledge, and ultimately ourselves.",
+      "My childhood shaped me into the person and the engineer I am today. Everybody says it, but 'why' is truly the tool I use the most. Its such an important part of me that it has featured heavily in performance reviews at my previous role, mostly as a pro :). And that is also why, historically, I've been the engineer who gets routed the unclear or difficult problems, the ones other developers would rather avoid; because I 'why' my way through solving them."
+    ]
+  },
+  "projects": {
+    "title": "SELECTED PROJECTS",
+    "items": [
+      {
+        "name": "Portfolio UI Rewrite",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "tech": [
+          "Vue 3",
+          "Tailwind",
+          "Motion"
+        ]
+      },
+      {
+        "name": "Portfolio UI Rewrite",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "tech": [
+          "Vue 3",
+          "Tailwind",
+          "Motion"
+        ]
+      },
+      {
+        "name": "Portfolio UI Rewrite",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "tech": [
+          "Vue 3",
+          "Tailwind",
+          "Motion"
+        ]
+      },
+      {
+        "name": "Portfolio UI Rewrite",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "tech": [
+          "Vue 3",
+          "Tailwind",
+          "Motion"
+        ]
+      },
+      {
+        "name": "Portfolio UI Rewrite",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "tech": [
+          "Vue 3",
+          "Tailwind",
+          "Motion"
+        ]
+      },
+      {
+        "name": "Portfolio UI Rewrite",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "tech": [
+          "Vue 3",
+          "Tailwind",
+          "Motion"
+        ]
+      },
+      {
+        "name": "Portfolio UI Rewrite",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "tech": [
+          "Vue 3",
+          "Tailwind",
+          "Motion"
+        ]
+      },
+      {
+        "name": "E-Commerce Analytics",
+        "description": "Real-time dashboard processing thousands of events per minute with smooth 60fps graphs.",
+        "link": "#",
+        "image": "",
+        "tech": [
+          "React",
+          "TypeScript",
+          "D3.js"
+        ]
+      }
+    ]
+  },
+  "results": {
+    "title": "MEASURABLE RESULTS",
+    "items": [
+      {
+        "title": "Team Productivity",
+        "description": "Internal tooling automation"
+      },
+      {
+        "title": "Bug Reduction",
+        "description": "Data-fetching bugs via React Query"
+      },
+      {
+        "title": "POC Velocity",
+        "description": "AI-assisted development tools"
+      },
+      {
+        "title": "Type Safety",
+        "description": "Advanced patterns & mentoring"
+      },
+      {
+        "title": "Client Satisfaction",
+        "description": "Bridging technical/design gaps"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "WHAT PEOPLE SAY",
+    "items": [
+      {
+        "text": "Mannan is a dedicated developer with a strong technical background and a record of delivering high-quality work. He can tackle complex tasks using a systematic approach...",
+        "author": "Poyraz Umut Hatipoğlu, PhD",
+        "role": "Engineering Manager | Lead Computer Vision & AI Engineer",
+        "context": "Poyraz worked with Mannan but on different teams",
+        "date": "January 10, 2026",
+        "avatar": "/avatars/poyraz.png"
+      },
+      {
+        "text": "Mannan is an incredibly intelligent Frontend Developer with a deep passion for learning every detail of the technology he uses. He has the rare ability to take on complex features...",
+        "author": "Ozge Gurleyen",
+        "role": "Senior Frontend Developer",
+        "context": "Ozge worked with Mannan on the same team",
+        "date": "February 25, 2025",
+        "avatar": "/avatars/ozge.png"
+      }
+    ]
+  },
+  "stack": {
+    "title": "STACK & CODE",
+    "categories": [
+      {
+        "name": "LANGUAGES",
+        "items": [
+          "TypeScript",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "Python"
+        ]
+      },
+      {
+        "name": "FRAMEWORKS",
+        "items": [
+          "React",
+          "Vue 3",
+          "Next.js",
+          "Nuxt",
+          "Tailwind CSS"
+        ]
+      },
+      {
+        "name": "STATE & DATA",
+        "items": [
+          "Pinia",
+          "Vue Query",
+          "Zustand",
+          "Redux"
+        ]
+      },
+      {
+        "name": "UI & STYLING",
+        "items": [
+          "shadcn-vue",
+          "Framer Motion",
+          "Radix Vue",
+          "CSS Modules"
+        ]
+      },
+      {
+        "name": "TOOLS & TESTING",
+        "items": [
+          "Vite",
+          "Vitest",
+          "Cypress",
+          "Git",
+          "Docker"
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title": "EXPERIENCE",
+    "subtitle": "JOURNEY",
+    "items": [
+      {
+        "company": "INTENSEYE",
+        "role": "Senior Front-End Engineer",
+        "date": "06/2022 - 11/2025",
+        "color": "#F97316"
+      },
+      {
+        "company": "LAYERMARK",
+        "role": "Software Engineer",
+        "date": "06/2021 - 04/2022",
+        "color": "#3B82F6"
+      },
+      {
+        "company": "BILKENT UNIVERSITY",
+        "role": "B.Sc. Computer Science",
+        "date": "09/2018 - 06/2022",
+        "color": "#A855F7"
+      }
+    ]
+  },
+  "contact": {
+    "title": "LET'S BUILD SOMETHING GREAT",
+    "email": "abdul.1998.17@gmail.com",
+    "email_label": "GET IN TOUCH",
+    "github": "https://github.com/yutisio12",
+    "github_label": "VIEW GITHUB"
+  },
+  "github_calendar": {
+    "title": "OPEN SOURCE",
+    "username": "yutisio12"
+  }
+}
