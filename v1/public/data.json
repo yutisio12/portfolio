@@ -21,20 +21,32 @@
     "section_06": "06 /"
   },
   "profile": {
-    "name": "YUTISIO",
-    "title": "SENIOR ENGINEER",
+    "name": "A. R. YUTISIO",
+    "title": "SOFTWARE ENGINEER",
     "years_experience": "5+",
-    "bio_title": "THE 'WHY' BEHIND WHO I AM",
+    "bio_title": "WHO AM I",
     "bio_paragraphs": [
-      "When I was growing up, my parents, my teachers, all the authority figures would tell me to do certain things, but they would never explain why. This used to confuse my little brain. I could not articulate it back then, but I always felt a strong need to understand the reasoning behind things. Because I knew that is how we evolve our understanding, our knowledge, and ultimately ourselves.",
-      "My childhood shaped me into the person and the engineer I am today. Everybody says it, but 'why' is truly the tool I use the most. Its such an important part of me that it has featured heavily in performance reviews at my previous role, mostly as a pro :). And that is also why, historically, I've been the engineer who gets routed the unclear or difficult problems, the ones other developers would rather avoid; because I 'why' my way through solving them."
+      "I am a Software Engineer with 5+ years of experience building scalable web and mobile applications using modern technologies such as React, Next.js, and React Native, along with backend development in Python, Laravel, and CodeIgniter. I focus on writing clean, maintainable code and designing efficient systems that solve real business problems. I am comfortable working both independently and within teams, consistently delivering reliable solutions across different project scopes.",
+      "My experience includes working in the oil & gas fabrication industry, where IT was not initially a core focus. In this environment, I contributed to driving digital transformation initiatives that streamlined operations, reduced manual processes, and significantly improved efficiency—resulting in tangible business impact. I have also collaborated with international clients and distributed teams, strengthening my ability to communicate effectively and adapt in global, fast-paced environments."
     ]
   },
   "projects": {
     "title": "SELECTED PROJECTS",
     "items": [
       {
-        "name": "Portfolio UI Rewrite",
+        "name": "PCMS - Production & Quality",
+        "description": "A fabrication project management system covering CNC, welding, assembly, QA/QC, NDT, material traceability, Inspection Release Note, and blasting painting stages.",
+        "link": "",
+        "image": "",
+        "tech": [
+          "CodeIgniter 3",
+          "Bootstrap 3",
+          "Jquery",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "name": "PCMS - Operation & Maintenance",
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
         "link": "https://github.com",
         "image": "",
@@ -45,7 +57,7 @@
         ]
       },
       {
-        "name": "Portfolio UI Rewrite",
+        "name": "ISS - Internal Service System",
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
         "link": "https://github.com",
         "image": "",
@@ -56,58 +68,25 @@
         ]
       },
       {
-        "name": "Portfolio UI Rewrite",
-        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
-        "link": "https://github.com",
+        "name": "Famex",
+        "description": "Famex is a personal and family expense management application designed to help users control spending and track financial activity, with reporting for better financial planning.",
+        "link": "#",
         "image": "",
         "tech": [
-          "Vue 3",
+          "ReactJS",
           "Tailwind",
-          "Motion"
+          "NestJS (TypeScript)",
+          "Supabase"
         ]
       },
       {
-        "name": "Portfolio UI Rewrite",
-        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
-        "link": "https://github.com",
+        "name": "Qitab",
+        "description": "Qitab is a modern Quran web application that helps users read and save progress easily, featuring transliteration, translations, and expert-recited audio.",
+        "link": "https://qitab.netlify.app/",
         "image": "",
         "tech": [
-          "Vue 3",
-          "Tailwind",
-          "Motion"
-        ]
-      },
-      {
-        "name": "Portfolio UI Rewrite",
-        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
-        "link": "https://github.com",
-        "image": "",
-        "tech": [
-          "Vue 3",
-          "Tailwind",
-          "Motion"
-        ]
-      },
-      {
-        "name": "Portfolio UI Rewrite",
-        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
-        "link": "https://github.com",
-        "image": "",
-        "tech": [
-          "Vue 3",
-          "Tailwind",
-          "Motion"
-        ]
-      },
-      {
-        "name": "Portfolio UI Rewrite",
-        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
-        "link": "https://github.com",
-        "image": "",
-        "tech": [
-          "Vue 3",
-          "Tailwind",
-          "Motion"
+          "NuxtJS",
+          "Tailwind"
         ]
       },
       {
@@ -158,14 +137,6 @@
         "context": "Poyraz worked with Mannan but on different teams",
         "date": "January 10, 2026",
         "avatar": "/avatars/poyraz.png"
-      },
-      {
-        "text": "Mannan is an incredibly intelligent Frontend Developer with a deep passion for learning every detail of the technology he uses. He has the rare ability to take on complex features...",
-        "author": "Ozge Gurleyen",
-        "role": "Senior Frontend Developer",
-        "context": "Ozge worked with Mannan on the same team",
-        "date": "February 25, 2025",
-        "avatar": "/avatars/ozge.png"
       }
     ]
   },
@@ -178,7 +149,8 @@
           "TypeScript",
           "JavaScript",
           "HTML",
-          "CSS",
+          "Java",
+          "PHP",
           "Python"
         ]
       },
@@ -189,25 +161,28 @@
           "Vue 3",
           "Next.js",
           "Nuxt",
-          "Tailwind CSS"
+          "Tailwind CSS",
+          "CodeIgniter 3",
+          "Laravel",
+          "NestJS"
         ]
       },
       {
-        "name": "STATE & DATA",
+        "name": "DATABASES",
         "items": [
-          "Pinia",
-          "Vue Query",
-          "Zustand",
-          "Redux"
+          "PostgreSQL",
+          "MySQL",
+          "Supabase",
+          "Oracle"
         ]
       },
       {
         "name": "UI & STYLING",
         "items": [
-          "shadcn-vue",
-          "Framer Motion",
-          "Radix Vue",
-          "CSS Modules"
+          "shadcn",
+          "Mantine",
+          "Tailwind",
+          "Bootstrap"
         ]
       },
       {
@@ -227,28 +202,28 @@
     "subtitle": "JOURNEY",
     "items": [
       {
-        "company": "INTENSEYE",
-        "role": "Senior Front-End Engineer",
-        "date": "06/2022 - 11/2025",
+        "company": "PT SMOE INDONESIA",
+        "role": "Senior IT Programmer",
+        "date": "07/2023 - Present",
         "color": "#F97316"
       },
       {
-        "company": "LAYERMARK",
-        "role": "Software Engineer",
-        "date": "06/2021 - 04/2022",
+        "company": "PT SMOE INDONESIA",
+        "role": "IT Programmer",
+        "date": "07/2020 - 06/2023",
         "color": "#3B82F6"
       },
       {
-        "company": "BILKENT UNIVERSITY",
-        "role": "B.Sc. Computer Science",
-        "date": "09/2018 - 06/2022",
+        "company": "PT BOON SOFTWARE",
+        "role": "Internship Programmer",
+        "date": "08/2019 - 05/2020",
         "color": "#A855F7"
       }
     ]
   },
   "contact": {
     "title": "LET'S BUILD SOMETHING GREAT",
-    "email": "abdul.1998.17@gmail.com",
+    "email": "agungridhoyutisio@gmail.com",
     "email_label": "GET IN TOUCH",
     "github": "https://github.com/yutisio12",
     "github_label": "VIEW GITHUB"
