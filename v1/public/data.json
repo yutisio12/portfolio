@@ -103,7 +103,7 @@
     ]
   },
   "results": {
-    "title": "MEASURABLE RESULTS",
+    "title": "CERTIFICATION",
     "items": [
       {
         "title": "Team Productivity",
@@ -186,12 +186,12 @@
         ]
       },
       {
-        "name": "TOOLS & TESTING",
+        "name": "SERVERS",
         "items": [
-          "Vite",
-          "Vitest",
-          "Cypress",
-          "Git",
+          "Apache",
+          "Nginx",
+          "Cloudflare",
+          "Kubernetes",
           "Docker"
         ]
       }
