@@ -88,7 +88,7 @@ const getTechIconUrl = (name: string) => {
       <!-- HERO -->
       <section class="min-h-[100dvh] flex flex-col items-center justify-center relative px-6">
         <div v-motion-fade-visible-once class="relative inline-flex items-center justify-center w-full max-w-[95vw] mx-auto overflow-hidden sm:overflow-visible">
-          <h1 class="text-[clamp(5.5rem,18vw,28rem)] leading-none font-heading text-transparent uppercase text-stroke-1 sm:text-stroke-2 z-10 w-full text-center whitespace-nowrap">
+          <h1 class="text-[clamp(4.5rem,18vw,18rem)] leading-none font-heading text-transparent uppercase text-stroke-1 sm:text-stroke-2 z-10 w-full text-center whitespace-nowrap">
             {{ data.profile.name }}
           </h1>
           <div class="absolute left-0 right-0 top-1/2 h-[2px] bg-primary -translate-y-1/2 w-full sm:w-[120%] sm:-ml-[10%] z-20 rotate-12"
