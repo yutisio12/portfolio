@@ -21,7 +21,7 @@
     "section_06": "06 /"
   },
   "profile": {
-    "name": "AGUNG RY",
+    "name": "YUTISIO",
     "title": "SOFTWARE ENGINEER",
     "years_experience": "5+",
     "bio_title": "WHO AM I",
@@ -38,67 +38,42 @@
         "description": "A fabrication project management system covering CNC, welding, assembly, QA/QC, NDT, material traceability, Inspection Release Note, and blasting painting stages.",
         "link": "",
         "image": "",
-        "tech": [
-          "CodeIgniter 3",
-          "Bootstrap 3",
-          "Jquery",
-          "PostgreSQL"
-        ]
+        "tech": ["CodeIgniter 3", "Bootstrap 3", "Jquery", "PostgreSQL"]
       },
       {
         "name": "PCMS - Operation & Maintenance",
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
         "link": "https://github.com",
         "image": "",
-        "tech": [
-          "Codeigniter 3",
-          "Tailwind",
-          "Motion"
-        ]
+        "tech": ["Codeigniter 3", "Tailwind", "Motion"]
       },
       {
         "name": "ISS - Internal Service System",
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
         "link": "https://github.com",
         "image": "",
-        "tech": [
-          "Vue 3",
-          "Tailwind",
-          "Motion"
-        ]
+        "tech": ["Vue 3", "Tailwind", "Motion"]
       },
       {
         "name": "Famex",
         "description": "Famex is a personal and family expense management application designed to help users control spending and track financial activity, with reporting for better financial planning.",
         "link": "#",
         "image": "",
-        "tech": [
-          "ReactJS",
-          "Tailwind",
-          "NestJS (TypeScript)",
-          "Supabase"
-        ]
+        "tech": ["ReactJS", "Tailwind", "NestJS (TypeScript)", "Supabase"]
       },
       {
         "name": "Qitab",
         "description": "Qitab is a modern Quran web application that helps users read and save progress easily, featuring transliteration, translations, and expert-recited audio.",
         "link": "https://qitab.netlify.app/",
         "image": "",
-        "tech": [
-          "NuxtJS",
-          "Tailwind"
-        ]
+        "tech": ["NuxtJS", "Tailwind"]
       },
       {
         "name": "E-Commerce Analytics",
         "description": "Real-time dashboard processing thousands of events per minute with smooth 60fps graphs.",
         "link": "#",
         "image": "",
-        "tech": [
-          "React",
-          "TypeScript",
-          "D3.js"
-        ]
+        "tech": ["React", "TypeScript", "D3.js"]
       }
     ]
   },
@@ -145,14 +120,7 @@
     "categories": [
       {
         "name": "LANGUAGES",
-        "items": [
-          "TypeScript",
-          "JavaScript",
-          "HTML",
-          "Java",
-          "PHP",
-          "Python"
-        ]
+        "items": ["TypeScript", "JavaScript", "HTML", "Java", "PHP", "Python"]
       },
       {
         "name": "FRAMEWORKS",
@@ -169,31 +137,15 @@
       },
       {
         "name": "DATABASES",
-        "items": [
-          "PostgreSQL",
-          "MySQL",
-          "Supabase",
-          "Oracle"
-        ]
+        "items": ["PostgreSQL", "MySQL", "Supabase", "Oracle"]
       },
       {
         "name": "UI & STYLING",
-        "items": [
-          "shadcn",
-          "Mantine",
-          "Tailwind",
-          "Bootstrap"
-        ]
+        "items": ["shadcn", "Mantine", "Tailwind", "Bootstrap"]
       },
       {
         "name": "SERVERS",
-        "items": [
-          "Apache",
-          "Nginx",
-          "Cloudflare",
-          "Kubernetes",
-          "Docker"
-        ]
+        "items": ["Apache", "Nginx", "Cloudflare", "Kubernetes", "Docker"]
       }
     ]
   },
