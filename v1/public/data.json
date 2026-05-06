@@ -81,24 +81,28 @@
     "title": "CERTIFICATION",
     "items": [
       {
-        "title": "Team Productivity",
-        "description": "Internal tooling automation"
+        "title": "TOEIC - Test of English for International Communication",
+        "issuer": "ETS (Educational Testing Service)",
+        "date": "2023",
+        "credential_id": "",
+        "description": "English proficiency certification for international business communication.",
+        "attachment": ""
       },
       {
-        "title": "Bug Reduction",
-        "description": "Data-fetching bugs via React Query"
+        "title": "IELTS - International English Language Testing System",
+        "issuer": "British Council / IDP",
+        "date": "2023",
+        "credential_id": "",
+        "description": "International standardized English language proficiency test for non-native speakers.",
+        "attachment": ""
       },
       {
-        "title": "POC Velocity",
-        "description": "AI-assisted development tools"
-      },
-      {
-        "title": "Type Safety",
-        "description": "Advanced patterns & mentoring"
-      },
-      {
-        "title": "Client Satisfaction",
-        "description": "Bridging technical/design gaps"
+        "title": "Web Development Fundamentals",
+        "issuer": "Coursera / Udemy",
+        "date": "2022",
+        "credential_id": "",
+        "description": "Comprehensive certification covering modern web development technologies and best practices.",
+        "attachment": ""
       }
     ]
   },
