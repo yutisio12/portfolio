@@ -217,7 +217,7 @@ const getTechIconUrl = (name: string) => {
           </div>
         </section>
 
-        <!-- RESULTS -->
+        <!-- CERTIFICATIONS -->
         <section class="space-y-12" v-if="data.results">
           <h2
             v-motion-slide-visible-once-bottom
@@ -231,19 +231,106 @@ const getTechIconUrl = (name: string) => {
               :key="i"
               v-motion-slide-visible-once-bottom
               :delay="Number(i) * 100"
-              class="p-8 md:p-12 bg-card hover:bg-muted transition-colors group relative border border-border"
+              class="p-8 md:p-12 bg-card hover:bg-muted transition-all group relative border border-border"
             >
+              <!-- Index badge -->
               <div
-                class="absolute top-8 right-8 w-3 h-3 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"
-              ></div>
-              <h3
-                class="font-heading text-4xl md:text-5xl text-foreground mb-4 group-hover:text-primary transition-colors tracking-wide uppercase"
+                class="absolute top-8 right-8 font-mono-accent text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity tracking-widest"
               >
-                {{ item.title }}
-              </h3>
-              <p class="text-lg text-muted-foreground font-light">
-                {{ item.description }}
-              </p>
+                {{ String( Number(i) + 1 ).padStart(2, '0') }}
+              </div>
+
+              <!-- Accent dot -->
+              <div
+                class="absolute top-8 right-20 w-3 h-3 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"
+              ></div>
+
+              <div class="flex flex-col gap-4">
+                <!-- Title -->
+                <h3
+                  class="font-heading text-3xl md:text-4xl text-foreground group-hover:text-primary transition-colors tracking-wide uppercase pr-24"
+                >
+                  {{ item.title }}
+                </h3>
+
+                <!-- Issuer & Date row -->
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <span
+                    v-if="item.issuer"
+                    class="text-sm font-mono-accent text-primary tracking-wide"
+                  >
+                    {{ item.issuer }}
+                  </span>
+                  <span
+                    v-if="item.issuer && item.date"
+                    class="text-muted-foreground text-xs"
+                  >•</span>
+                  <span
+                    v-if="item.date"
+                    class="text-sm font-mono-accent text-muted-foreground"
+                  >
+                    {{ item.date }}
+                  </span>
+                </div>
+
+                <!-- Credential ID -->
+                <p
+                  v-if="item.credential_id"
+                  class="text-xs font-mono-accent text-muted-foreground tracking-widest uppercase"
+                >
+                  ID: {{ item.credential_id }}
+                </p>
+
+                <!-- Description -->
+                <p class="text-base text-muted-foreground font-light leading-relaxed">
+                  {{ item.description }}
+                </p>
+
+                <!-- Attachment / Lampiran button -->
+                <div class="flex flex-wrap gap-3 mt-4">
+                  <a
+                    v-if="item.attachment"
+                    :href="item.attachment"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-xs font-mono-accent text-muted-foreground hover:text-primary hover:border-primary transition-colors uppercase tracking-widest group/btn"
+                  >
+                    <svg
+                      class="w-4 h-4 transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 008.486 8.486L20.5 13"
+                      />
+                    </svg>
+                    Lihat Lampiran
+                  </a>
+                  <span
+                    v-else
+                    class="inline-flex items-center gap-2 px-5 py-2.5 border border-border/50 text-xs font-mono-accent text-muted-foreground/50 uppercase tracking-widest cursor-default"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 008.486 8.486L20.5 13"
+                      />
+                    </svg>
+                    Belum ada lampiran
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
