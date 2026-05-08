@@ -1,13 +1,13 @@
 {
   "theme": {
-    "background": "#000000",
-    "foreground": "#FFFFFF",
-    "primary": "#E5E7EB",
-    "primary_foreground": "#000000",
-    "muted": "#111111",
-    "muted_foreground": "#94A3B8",
-    "card": "#0A0A0A",
-    "border": "#27272a"
+    "background": "#0F1E3D",
+    "foreground": "#E8F4FD",
+    "primary": "#00C2F0",
+    "primary_foreground": "#0F1E3D",
+    "muted": "#1A2E52",
+    "muted_foreground": "#6DB8D8",
+    "card": "#152344",
+    "border": "#1E3A6E"
   },
   "general": {
     "loading": "Initializing Sequence...",
