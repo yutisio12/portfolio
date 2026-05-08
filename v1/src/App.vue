@@ -113,7 +113,7 @@ const getTechIconUrl = (name: string) => {
           </h1>
           <div
             class="absolute left-0 right-0 top-1/2 h-[2px] bg-primary -translate-y-1/2 w-full sm:w-[120%] sm:-ml-[10%] z-20 rotate-0"
-            style="background-color: #f97316"
+            style="background-color: #FFFFFF"
           ></div>
         </div>
 
