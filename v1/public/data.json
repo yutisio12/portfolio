@@ -1,13 +1,13 @@
 {
   "theme": {
-    "background": "#0F1E3D",
-    "foreground": "#E8F4FD",
-    "primary": "#00C2F0",
-    "primary_foreground": "#0F1E3D",
-    "muted": "#1A2E52",
-    "muted_foreground": "#6DB8D8",
-    "card": "#152344",
-    "border": "#1E3A6E"
+    "background": "#0B1622",
+    "foreground": "#E8F4F8",
+    "primary": "#00BFA6",
+    "primary_foreground": "#0B1622",
+    "muted": "#142230",
+    "muted_foreground": "#5BA8A0",
+    "card": "#0F1C2C",
+    "border": "#1C3348"
   },
   "general": {
     "loading": "Initializing Sequence...",
@@ -38,42 +38,67 @@
         "description": "A fabrication project management system covering CNC, welding, assembly, QA/QC, NDT, material traceability, Inspection Release Note, and blasting painting stages.",
         "link": "",
         "image": "",
-        "tech": ["CodeIgniter 3", "Bootstrap 3", "Jquery", "PostgreSQL"]
+        "tech": [
+          "CodeIgniter 3",
+          "Bootstrap 3",
+          "Jquery",
+          "PostgreSQL"
+        ]
       },
       {
         "name": "PCMS - Operation & Maintenance",
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
         "link": "https://github.com",
         "image": "",
-        "tech": ["Codeigniter 3", "Tailwind", "Motion"]
+        "tech": [
+          "Codeigniter 3",
+          "Tailwind",
+          "Motion"
+        ]
       },
       {
         "name": "ISS - Internal Service System",
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
         "link": "https://github.com",
         "image": "",
-        "tech": ["Vue 3", "Tailwind", "Motion"]
+        "tech": [
+          "Vue 3",
+          "Tailwind",
+          "Motion"
+        ]
       },
       {
         "name": "Famex",
         "description": "Famex is a personal and family expense management application designed to help users control spending and track financial activity, with reporting for better financial planning.",
         "link": "#",
         "image": "",
-        "tech": ["ReactJS", "Tailwind", "NestJS (TypeScript)", "Supabase"]
+        "tech": [
+          "ReactJS",
+          "Tailwind",
+          "NestJS (TypeScript)",
+          "Supabase"
+        ]
       },
       {
         "name": "Qitab",
         "description": "Qitab is a modern Quran web application that helps users read and save progress easily, featuring transliteration, translations, and expert-recited audio.",
         "link": "https://qitab.netlify.app/",
         "image": "",
-        "tech": ["NuxtJS", "Tailwind"]
+        "tech": [
+          "NuxtJS",
+          "Tailwind"
+        ]
       },
       {
         "name": "E-Commerce Analytics",
         "description": "Real-time dashboard processing thousands of events per minute with smooth 60fps graphs.",
         "link": "#",
         "image": "",
-        "tech": ["React", "TypeScript", "D3.js"]
+        "tech": [
+          "React",
+          "TypeScript",
+          "D3.js"
+        ]
       }
     ]
   },
@@ -83,26 +108,18 @@
       {
         "title": "TOEIC - Test of English for International Communication",
         "issuer": "ETS (Educational Testing Service)",
-        "date": "2023",
-        "credential_id": "",
-        "description": "English proficiency certification for international business communication.",
-        "attachment": ""
-      },
-      {
-        "title": "IELTS - International English Language Testing System",
-        "issuer": "British Council / IDP",
-        "date": "2023",
-        "credential_id": "",
-        "description": "International standardized English language proficiency test for non-native speakers.",
-        "attachment": ""
+        "date": "2020",
+        "credential_id": "3311701055",
+        "description": "English Proficiency \n TOEIC Listening & Reading: 750/990 \n Intermediate to Upper-Intermediate English proficiency",
+        "attachment": "/attachment/TOEIC_3311701055.pdf"
       },
       {
         "title": "Web Development Fundamentals",
-        "issuer": "Coursera / Udemy",
-        "date": "2022",
+        "issuer": "TEMASEK FOUNDATION International",
+        "date": "2018",
         "credential_id": "",
-        "description": "Comprehensive certification covering modern web development technologies and best practices.",
-        "attachment": ""
+        "description": "Basic web development skills including HTML, CSS, JavaScript, and fundamental web technologies.",
+        "attachment": "/attachment/WEBDEVFUND.pdf"
       }
     ]
   },
@@ -124,7 +141,14 @@
     "categories": [
       {
         "name": "LANGUAGES",
-        "items": ["TypeScript", "JavaScript", "HTML", "Java", "PHP", "Python"]
+        "items": [
+          "TypeScript",
+          "JavaScript",
+          "HTML",
+          "Java",
+          "PHP",
+          "Python"
+        ]
       },
       {
         "name": "FRAMEWORKS",
@@ -141,15 +165,31 @@
       },
       {
         "name": "DATABASES",
-        "items": ["PostgreSQL", "MySQL", "Supabase", "Oracle"]
+        "items": [
+          "PostgreSQL",
+          "MySQL",
+          "Supabase",
+          "Oracle"
+        ]
       },
       {
         "name": "UI & STYLING",
-        "items": ["shadcn", "Mantine", "Tailwind", "Bootstrap"]
+        "items": [
+          "shadcn",
+          "Mantine",
+          "Tailwind",
+          "Bootstrap"
+        ]
       },
       {
         "name": "SERVERS",
-        "items": ["Apache", "Nginx", "Cloudflare", "Kubernetes", "Docker"]
+        "items": [
+          "Apache",
+          "Nginx",
+          "Cloudflare",
+          "Kubernetes",
+          "Docker"
+        ]
       }
     ]
   },
