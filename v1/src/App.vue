@@ -5,6 +5,17 @@ import ParticleBackground from "./components/ParticleBackground.vue";
 const data = ref<any>(null);
 const loading = ref(true);
 const totalContributions = ref<string | null>(null);
+const selectedAttachment = ref<{ title: string; url: string } | null>(null);
+
+const openModal = (title: string, url: string) => {
+  selectedAttachment.value = { title, url };
+  document.body.style.overflow = 'hidden';
+};
+
+const closeModal = () => {
+  selectedAttachment.value = null;
+  document.body.style.overflow = '';
+};
 
 onMounted(async () => {
   try {
@@ -282,18 +293,16 @@ const getTechIconUrl = (name: string) => {
                 </p>
 
                 <!-- Description -->
-                <p class="text-base text-muted-foreground font-light leading-relaxed">
+                <p class="text-base text-muted-foreground font-light leading-relaxed whitespace-pre-line">
                   {{ item.description }}
                 </p>
 
                 <!-- Attachment / Lampiran button -->
                 <div class="flex flex-wrap gap-3 mt-4">
-                  <a
+                  <button
                     v-if="item.attachment"
-                    :href="item.attachment"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-xs font-mono-accent text-muted-foreground hover:text-primary hover:border-primary transition-colors uppercase tracking-widest group/btn"
+                    @click="openModal(item.title, item.attachment)"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-xs font-mono-accent text-muted-foreground hover:text-primary hover:border-primary transition-colors uppercase tracking-widest group/btn cursor-pointer"
                   >
                     <svg
                       class="w-4 h-4 transition-colors"
@@ -305,11 +314,11 @@ const getTechIconUrl = (name: string) => {
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 008.486 8.486L20.5 13"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                       />
                     </svg>
-                    Lihat Lampiran
-                  </a>
+                    View Certificate
+                  </button>
                   <span
                     v-else
                     class="inline-flex items-center gap-2 px-5 py-2.5 border border-border/50 text-xs font-mono-accent text-muted-foreground/50 uppercase tracking-widest cursor-default"
@@ -324,10 +333,10 @@ const getTechIconUrl = (name: string) => {
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 008.486 8.486L20.5 13"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                       />
                     </svg>
-                    Belum ada lampiran
+                    No Attachment
                   </span>
                 </div>
               </div>
@@ -599,6 +608,71 @@ const getTechIconUrl = (name: string) => {
         </section>
       </div>
     </main>
+
+    <!-- PDF Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div
+          v-if="selectedAttachment"
+          id="pdf-modal-overlay"
+          class="pdf-modal-overlay"
+          @click.self="closeModal"
+        >
+          <div class="pdf-modal-container">
+            <!-- Modal Header -->
+            <div class="pdf-modal-header">
+              <div class="pdf-modal-title-wrap">
+                <div class="pdf-modal-accent"></div>
+                <span class="pdf-modal-title">{{ selectedAttachment.title }}</span>
+              </div>
+              <div class="pdf-modal-actions">
+                <a
+                  :href="selectedAttachment.url"
+                  download
+                  class="pdf-modal-btn pdf-modal-btn--download"
+                  title="Download"
+                >
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Download
+                </a>
+                <a
+                  :href="selectedAttachment.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pdf-modal-btn pdf-modal-btn--open"
+                  title="Open in new tab"
+                >
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Open Tab
+                </a>
+                <button
+                  @click="closeModal"
+                  class="pdf-modal-close"
+                  title="Close"
+                >
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <!-- PDF iframe -->
+            <div class="pdf-modal-body">
+              <iframe
+                :src="selectedAttachment.url"
+                class="pdf-modal-iframe"
+                frameborder="0"
+                title="Certificate PDF"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
@@ -606,5 +680,151 @@ const getTechIconUrl = (name: string) => {
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+}
+
+/* ── PDF Modal ─────────────────────────────────────────────── */
+.pdf-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(11, 22, 34, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.pdf-modal-container {
+  width: 100%;
+  max-width: 900px;
+  height: 90dvh;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0, 191, 166, 0.12), 0 0 0 1px var(--border);
+}
+
+.pdf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--muted);
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.pdf-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+.pdf-modal-accent {
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.pdf-modal-title {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 0.875rem;
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.pdf-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  font-size: 0.7rem;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  background: transparent;
+}
+
+.pdf-modal-btn--download:hover,
+.pdf-modal-btn--open:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.pdf-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.pdf-modal-close:hover {
+  color: var(--foreground);
+  border-color: var(--primary);
+  background: var(--background);
+}
+
+.pdf-modal-body {
+  flex: 1;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.pdf-modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Modal transition */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.25s ease;
+}
+.modal-enter-active .pdf-modal-container,
+.modal-leave-active .pdf-modal-container {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+.modal-enter-from .pdf-modal-container {
+  transform: scale(0.96) translateY(10px);
+  opacity: 0;
+}
+.modal-leave-to .pdf-modal-container {
+  transform: scale(0.96) translateY(10px);
+  opacity: 0;
 }
 </style>
