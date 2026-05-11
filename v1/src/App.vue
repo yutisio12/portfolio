@@ -6,6 +6,9 @@ const data = ref<any>(null);
 const loading = ref(true);
 const totalContributions = ref<string | null>(null);
 const selectedAttachment = ref<{ title: string; url: string } | null>(null);
+const selectedProject = ref<{ name: string; link: string } | null>(null);
+const iframeError = ref(false);
+const iframeLoading = ref(false);
 
 const openModal = (title: string, url: string) => {
   selectedAttachment.value = { title, url };
@@ -15,6 +18,30 @@ const openModal = (title: string, url: string) => {
 const closeModal = () => {
   selectedAttachment.value = null;
   document.body.style.overflow = '';
+};
+
+const isValidLink = (link: string) => !!link && link !== '#';
+
+const openProjectPreview = (proj: { name: string; link: string }) => {
+  selectedProject.value = { name: proj.name, link: proj.link };
+  iframeError.value = false;
+  iframeLoading.value = isValidLink(proj.link);
+  document.body.style.overflow = 'hidden';
+};
+
+const closeProjectPreview = () => {
+  selectedProject.value = null;
+  iframeError.value = false;
+  document.body.style.overflow = '';
+};
+
+const handleIframeError = () => {
+  iframeError.value = true;
+  iframeLoading.value = false;
+};
+
+const handleIframeLoad = () => {
+  iframeLoading.value = false;
 };
 
 onMounted(async () => {
@@ -187,14 +214,13 @@ const getTechIconUrl = (name: string) => {
             {{ data.general.section_02 }} {{ data.projects.title }}
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a
+            <div
               v-for="(proj, i) in data.projects.items"
               :key="'proj-' + i"
-              :href="proj.link"
-              target="_blank"
+              @click="openProjectPreview(proj)"
               v-motion-slide-visible-once-bottom
               :delay="Number(i) * 100"
-              class="block bg-card hover:bg-muted border border-border transition-all group relative overflow-hidden flex flex-col h-full"
+              class="block bg-card hover:bg-muted border border-border transition-all group relative overflow-hidden flex flex-col h-full cursor-pointer"
             >
               <div
                 class="w-full h-48 bg-muted border-b border-border overflow-hidden"
@@ -224,7 +250,7 @@ const getTechIconUrl = (name: string) => {
                   >
                 </div>
               </div>
-            </a>
+            </div>
           </div>
         </section>
 
@@ -673,6 +699,121 @@ const getTechIconUrl = (name: string) => {
         </div>
       </Transition>
     </Teleport>
+
+    <!-- Project Preview Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div
+          v-if="selectedProject"
+          class="pdf-modal-overlay"
+          @click.self="closeProjectPreview"
+        >
+          <div class="safari-window">
+            <!-- Tab bar + traffic lights -->
+            <div class="safari-tabbar">
+              <div class="safari-dots">
+                <button class="safari-dot safari-dot--close" @click="closeProjectPreview" title="Close">
+                  <svg width="6" height="6" viewBox="0 0 6 6"><path d="M0 0l6 6M6 0l-6 6" stroke="currentColor" stroke-width="1.1" fill="none"/></svg>
+                </button>
+                <button class="safari-dot safari-dot--minimize" title="Minimize">
+                  <svg width="6" height="6" viewBox="0 0 6 6"><path d="M0 3h6" stroke="currentColor" stroke-width="1.1" fill="none"/></svg>
+                </button>
+                <button class="safari-dot safari-dot--maximize" title="Maximize">
+                  <svg width="6" height="6" viewBox="0 0 6 6"><path d="M0.5 2l2.5-1.5 2.5 1.5v2.5l-2.5 1.5-2.5-1.5z" stroke="currentColor" stroke-width="0.7" fill="none"/></svg>
+                </button>
+              </div>
+              <div class="safari-tabs">
+                <div class="safari-tab safari-tab--active">
+                  <span class="safari-tab-title">{{ selectedProject.name }}</span>
+                </div>
+              </div>
+            </div>
+            <!-- Toolbar: nav + URL bar + actions -->
+            <div class="safari-toolbar">
+              <div class="safari-nav-group">
+                <button class="safari-nav-btn" title="Back" disabled>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button class="safari-nav-btn" title="Forward" disabled>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+              <div class="safari-url-bar">
+                <svg class="safari-lock-icon" width="11" height="11" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z"/>
+                </svg>
+                <span class="safari-url-text">{{ isValidLink(selectedProject.link) ? selectedProject.link.replace(/^https?:\/\//, '') : 'No URL' }}</span>
+              </div>
+              <div class="safari-actions">
+                <a
+                  v-if="isValidLink(selectedProject.link)"
+                  :href="selectedProject.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="safari-action-btn"
+                  title="Open in new tab"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+                <button class="safari-action-btn" title="Share">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+              </div>
+            </div>
+            <!-- Content -->
+            <div class="safari-body">
+              <!-- Loading skeleton -->
+              <div v-if="iframeLoading" class="browser-loading">
+                <div class="skeleton-bar skeleton-bar--nav"></div>
+                <div class="skeleton-bar skeleton-bar--hero"></div>
+                <div class="skeleton-bar skeleton-bar--line" style="width:80%"></div>
+                <div class="skeleton-bar skeleton-bar--line" style="width:60%"></div>
+                <div class="skeleton-bar skeleton-bar--line" style="width:70%"></div>
+                <p class="browser-loading-text">Loading preview<span class="loading-dots"></span></p>
+              </div>
+              <!-- Valid link, no iframe error -->
+              <iframe
+                v-if="isValidLink(selectedProject.link) && !iframeError"
+                v-show="!iframeLoading"
+                :src="selectedProject.link"
+                @error="handleIframeError"
+                @load="handleIframeLoad"
+                class="pdf-modal-iframe"
+                frameborder="0"
+                :title="'Preview ' + selectedProject.name"
+              ></iframe>
+              <!-- Invalid link -->
+              <div v-if="!isValidLink(selectedProject.link)" class="pdf-modal-message">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" class="w-10 h-10 mb-4 text-muted-foreground">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                </svg>
+                <p class="text-lg font-heading uppercase text-foreground mb-2">Preview Not Available</p>
+                <p class="text-sm text-muted-foreground font-light">This project does not have a public URL.</p>
+              </div>
+              <!-- Iframe blocked -->
+              <div v-if="isValidLink(selectedProject.link) && iframeError" class="pdf-modal-message">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" class="w-10 h-10 mb-4 text-muted-foreground">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                </svg>
+                <p class="text-lg font-heading uppercase text-foreground mb-2">Cannot Embed Preview</p>
+                <p class="text-sm text-muted-foreground font-light mb-6">This website does not allow iframe embedding.</p>
+                <a
+                  :href="selectedProject.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 border border-primary text-xs font-mono text-primary uppercase tracking-widest hover:bg-primary hover:text-background transition-colors"
+                >
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Open in New Tab
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
@@ -806,25 +947,314 @@ html {
   display: block;
 }
 
+.pdf-modal-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 2rem;
+}
+
+/* ── Safari Window (macOS) ────────────────────────────────── */
+.safari-window {
+  width: 100%;
+  max-width: 1100px;
+  height: 85dvh;
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 0.5px rgba(255, 255, 255, 0.06),
+    0 22px 70px 4px rgba(0, 0, 0, 0.56),
+    0 0 40px rgba(0, 191, 166, 0.06);
+}
+
+/* Tab bar */
+.safari-tabbar {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 12px;
+  background: linear-gradient(180deg, rgba(58, 58, 60, 0.45) 0%, rgba(44, 44, 46, 0.55) 100%);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.safari-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.safari-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: transparent;
+  transition: color 0.15s;
+}
+
+.safari-dot--close { background: #ff5f57; }
+.safari-dot--minimize { background: #febc2e; }
+.safari-dot--maximize { background: #28c840; }
+
+.safari-dot--close:hover {
+  color: rgba(80, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+.safari-dot--minimize:hover {
+  color: rgba(110, 70, 0, 0.85);
+}
+
+.safari-dot--maximize:hover {
+  color: rgba(0, 70, 0, 0.85);
+}
+
+.safari-tabs {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.safari-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 0 16px;
+  border-radius: 6px;
+  max-width: 240px;
+  min-width: 0;
+}
+
+.safari-tab--active {
+  background: rgba(70, 70, 74, 0.6);
+}
+
+.safari-tab-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+/* Toolbar */
+.safari-toolbar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px;
+  background: linear-gradient(180deg, rgba(44, 44, 46, 0.55) 0%, rgba(36, 36, 38, 0.6) 100%);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.safari-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.safari-nav-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.safari-nav-btn:enabled {
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+}
+
+.safari-nav-btn:enabled:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.safari-url-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0 14px;
+  height: 28px;
+  max-width: 520px;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+.safari-lock-icon {
+  color: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.safari-url-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.safari-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.safari-action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 0;
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+
+.safari-action-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Body */
+.safari-body {
+  flex: 1;
+  overflow: hidden;
+  background: var(--background);
+  position: relative;
+}
+
+/* ── Skeleton Loading ─────────────────────────────────────── */
+.browser-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 12px;
+  z-index: 2;
+  background: var(--background);
+}
+
+.skeleton-bar {
+  border-radius: 4px;
+  background: var(--muted);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-bar--nav {
+  height: 14px;
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.skeleton-bar--hero {
+  height: 100px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.skeleton-bar--line {
+  height: 12px;
+}
+
+.browser-loading-text {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+  100% { content: ''; }
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 0.6; }
+}
+
 /* Modal transition */
 .modal-enter-active,
 .modal-leave-active {
   transition: opacity 0.25s ease;
 }
 .modal-enter-active .pdf-modal-container,
-.modal-leave-active .pdf-modal-container {
-  transition: transform 0.25s ease, opacity 0.25s ease;
+.modal-leave-active .pdf-modal-container,
+.modal-enter-active .safari-window,
+.modal-leave-active .safari-window {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
 }
 .modal-enter-from,
 .modal-leave-to {
   opacity: 0;
 }
-.modal-enter-from .pdf-modal-container {
-  transform: scale(0.96) translateY(10px);
+.modal-enter-from .pdf-modal-container,
+.modal-enter-from .safari-window {
+  transform: scale(0.92) translateY(20px);
   opacity: 0;
 }
-.modal-leave-to .pdf-modal-container {
-  transform: scale(0.96) translateY(10px);
+.modal-leave-to .pdf-modal-container,
+.modal-leave-to .safari-window {
+  transform: scale(0.95) translateY(10px);
   opacity: 0;
 }
 </style>
