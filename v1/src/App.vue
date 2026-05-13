@@ -226,7 +226,7 @@ const getTechIconUrl = (name: string) => {
                 class="w-full h-48 bg-muted border-b border-border overflow-hidden"
               >
                 <img
-                  :src="proj.image || fallbackImg"
+                  :src="proj.image || proj.alt_image || fallbackImg"
                   @error="handleImageError"
                   class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity"
                   alt="Project Thumbnail"
@@ -617,6 +617,14 @@ const getTechIconUrl = (name: string) => {
             class="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <a
+              :href="data.contact.linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-8 sm:px-12 py-6 border border-border text-foreground font-mono-accent font-bold tracking-widest uppercase hover:border-primary hover:text-primary transition-colors"
+            >
+              {{ data.contact.linkedin_label }}
+            </a>
+            <a
               :href="'mailto:' + data.contact.email"
               class="w-full sm:w-auto px-8 sm:px-12 py-6 bg-primary text-primary-foreground font-mono-accent font-bold tracking-widest uppercase hover:opacity-90 transition-colors"
             >
@@ -629,7 +637,7 @@ const getTechIconUrl = (name: string) => {
               class="w-full sm:w-auto px-8 sm:px-12 py-6 border border-border text-foreground font-mono-accent font-bold tracking-widest uppercase hover:border-primary hover:text-primary transition-colors"
             >
               {{ data.contact.github_label }}
-            </a>
+            </a>        
           </div>
         </section>
       </div>
