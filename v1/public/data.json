@@ -129,16 +129,32 @@
       }
     ]
   },
-  "testimonials": {
-    "title": "CERTIFICATION",
+  "expertise": {
+    "title": "CORE COMPETENCIES",
     "items": [
       {
-        "text": "TOEIC",
-        "author": "IELTS",
-        "role": " ",
-        "context": " ",
-        "date": " ",
-        "avatar": " "
+        "area": "Full-Stack Development",
+        "level": 90,
+        "description": "Expertise in building complete web applications from database to UI",
+        "technologies": ["React", "Vue 3", "Node.js", "Python/Django", "Laravel"]
+      },
+      {
+        "area": "Mobile Applications",
+        "level": 80,
+        "description": "Cross-platform mobile development with native performance",
+        "technologies": ["React Native", "Flutter", "Ionic"]
+      },
+      {
+        "area": "Cloud & DevOps",
+        "level": 75,
+        "description": "Deployment, scaling, and maintenance of production systems",
+        "technologies": ["AWS", "Docker", "Kubernetes", "CI/CD"]
+      },
+      {
+        "area": "Database Design",
+        "level": 85,
+        "description": "Optimized data modeling and query performance",
+        "technologies": ["PostgreSQL", "MySQL", "MongoDB", "Redis"]
       }
     ]
   },
