@@ -38,6 +38,7 @@
         "description": "A fabrication project management system covering CNC, welding, assembly, QA/QC, NDT, material traceability, Inspection Release Note, and blasting painting stages.",
         "link": "",
         "image": "",
+        "alt_image": "/attachment/mockup_1.png",
         "tech": [
           "CodeIgniter 3",
           "Bootstrap 3",
@@ -48,8 +49,9 @@
       {
         "name": "PCMS - Operation & Maintenance",
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
-        "link": "https://github.com",
+        "link": "/attachment/TOEIC_3311701055.pdf",
         "image": "",
+        "alt_image": "/attachment/mockup_1.png",
         "tech": [
           "Codeigniter 3",
           "Tailwind",
@@ -61,6 +63,7 @@
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
         "link": "https://github.com",
         "image": "",
+        "alt_image": "/attachment/mockup_1.png",
         "tech": [
           "Vue 3",
           "Tailwind",
@@ -72,6 +75,7 @@
         "description": "Famex is a personal and family expense management application designed to help users control spending and track financial activity, with reporting for better financial planning.",
         "link": "#",
         "image": "",
+        "alt_image": "/attachment/mockup_1.png",
         "tech": [
           "ReactJS",
           "Tailwind",
@@ -84,6 +88,7 @@
         "description": "Qitab is a modern Quran web application that helps users read and save progress easily, featuring transliteration, translations, and expert-recited audio.",
         "link": "https://qitab.netlify.app/",
         "image": "",
+        "alt_image": "/attachment/mockup_1.png",
         "tech": [
           "NuxtJS",
           "Tailwind"
@@ -94,6 +99,7 @@
         "description": "Real-time dashboard processing thousands of events per minute with smooth 60fps graphs.",
         "link": "#",
         "image": "",
+        "alt_image": "/attachment/mockup_1.png",
         "tech": [
           "React",
           "TypeScript",
@@ -222,7 +228,9 @@
     "email": "agungridhoyutisio@gmail.com",
     "email_label": "GET IN TOUCH",
     "github": "https://github.com/yutisio12",
-    "github_label": "VIEW GITHUB"
+    "github_label": "GITHUB",
+    "linkedin": "https://www.linkedin.com/in/agung-ridho-yutisio-b95b02194/",
+    "linkedin_label": "LINKEDIN"
   },
   "github_calendar": {
     "title": "OPEN SOURCE",
