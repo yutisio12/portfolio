@@ -370,56 +370,6 @@ const getTechIconUrl = (name: string) => {
           </div>
         </section>
 
-        <!-- TESTIMONIALS -->
-        <section class="space-y-12" v-if="data.testimonials">
-          <h2
-            v-motion-slide-visible-once-bottom
-            class="text-sm font-mono-accent text-muted-foreground tracking-widest uppercase"
-          >
-            {{ data.general.section_04 }} {{ data.testimonials.title }}
-          </h2>
-          <div class="space-y-16">
-            <div
-              v-for="(t, i) in data.testimonials.items"
-              :key="i"
-              v-motion-slide-visible-once-bottom
-              :delay="Number(i) * 100"
-              class="pl-8 md:pl-12 border-l-4 border-primary space-y-8"
-            >
-              <p
-                class="text-2xl md:text-3xl text-foreground font-light italic leading-relaxed"
-              >
-                "{{ t.text }}"
-              </p>
-              <div class="flex items-center gap-6">
-                <div
-                  class="w-16 h-16 rounded-full bg-muted border border-border overflow-hidden flex items-center justify-center text-muted-foreground font-heading text-xl relative"
-                >
-                  <img
-                    v-if="t.avatar"
-                    :src="t.avatar"
-                    @error="
-                      (e) =>
-                        ((e.target as HTMLImageElement).style.opacity = '0')
-                    "
-                    class="w-full h-full object-cover grayscale absolute inset-0 z-10 transition-opacity"
-                  />
-                  <span class="z-0">{{
-                    t.author.substring(0, 2).toUpperCase()
-                  }}</span>
-                </div>
-                <div>
-                  <p class="font-bold text-foreground uppercase tracking-wide">
-                    {{ t.author }}
-                  </p>
-                  <p class="text-primary font-mono-accent text-sm mt-1">
-                    {{ t.role }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <!-- STACK -->
         <section class="space-y-12 relative py-12" v-if="data.stack">
@@ -599,6 +549,61 @@ const getTechIconUrl = (name: string) => {
                 alt="GitHub Contributions Calendar"
                 class="min-w-[700px] w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity"
               />
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERTISE -->
+        <section class="space-y-12" v-if="data.expertise">
+          <h2
+            v-motion-slide-visible-once-bottom
+            class="text-sm font-mono-accent text-muted-foreground tracking-widest uppercase"
+          >
+            {{ data.general.section_04 }} {{ data.expertise.title }}
+          </h2>
+          <div class="space-y-8">
+            <div
+              v-for="(exp, i) in data.expertise.items"
+              :key="i"
+              v-motion-slide-visible-once-bottom
+              :delay="Number(i) * 100"
+              class="space-y-4"
+            >
+              <!-- Expertise Header -->
+              <div class="flex justify-between items-start mb-2">
+                <h3
+                  class="font-heading text-xl text-foreground group-hover:text-primary transition-colors uppercase"
+                >
+                  {{ exp.area }}
+                </h3>
+                <span class="font-mono-accent text-xs text-primary tracking-widest uppercase">
+                  {{ exp.level }}%
+                </span>
+              </div>
+
+              <!-- Description -->
+              <p class="text-base text-muted-foreground font-light leading-relaxed mb-2">
+                {{ exp.description }}
+              </p>
+
+              <!-- Technologies -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  v-for="tech in exp.technologies"
+                  :key="tech"
+                  class="px-3 py-1 bg-background border border-border text-xs font-mono-accent text-muted-foreground uppercase"
+                >
+                  {{ tech }}
+                </span>
+              </div>
+
+              <!-- Progress Bar -->
+              <div class="w-full bg-background rounded-full h-2.5 overflow-hidden">
+                <div
+                  :style="{ width: exp.level + '%', backgroundColor: 'var(--primary)' }"
+                  class="h-2.5 transition-all duration-500"
+                ></div>
+              </div>
             </div>
           </div>
         </section>
