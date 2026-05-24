@@ -39,24 +39,15 @@
         "link": "",
         "image": "",
         "alt_image": "/attachment/mockup_1.png",
-        "tech": [
-          "CodeIgniter 3",
-          "Bootstrap 3",
-          "Jquery",
-          "PostgreSQL"
-        ]
+        "tech": ["CodeIgniter 3", "Bootstrap 3", "Jquery", "PostgreSQL"]
       },
       {
-        "name": "PCMS - Operation & Maintenance",
-        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
-        "link": "/attachment/TOEIC_3311701055.pdf",
-        "image": "",
+        "name": "O&M Centralized - Share Drive",
+        "description": "A web-based Application to serve as a centralized, secure document repository for Operations & Maintenance (O&M) teams. Functioning similarly to a cloud drive (e.g. Google Drive).",
+        "link": "/attachment/om_sharedrive_preview.pdf",
+        "image": "/attachment/cover_om-sharedrive.png",
         "alt_image": "/attachment/mockup_1.png",
-        "tech": [
-          "Codeigniter 3",
-          "Tailwind",
-          "Motion"
-        ]
+        "tech": ["Codeigniter 3", "Bootstrap 4", "Jquery", "Synologi"]
       },
       {
         "name": "ISS - Internal Service System",
@@ -64,11 +55,7 @@
         "link": "https://github.com",
         "image": "",
         "alt_image": "/attachment/mockup_1.png",
-        "tech": [
-          "Vue 3",
-          "Tailwind",
-          "Motion"
-        ]
+        "tech": ["Vue 3", "Tailwind", "Motion"]
       },
       {
         "name": "Famex",
@@ -76,12 +63,7 @@
         "link": "#",
         "image": "",
         "alt_image": "/attachment/mockup_1.png",
-        "tech": [
-          "ReactJS",
-          "Tailwind",
-          "NestJS (TypeScript)",
-          "Supabase"
-        ]
+        "tech": ["ReactJS", "Tailwind", "NestJS (TypeScript)", "Supabase"]
       },
       {
         "name": "Qitab",
@@ -89,10 +71,7 @@
         "link": "https://qitab.netlify.app/",
         "image": "",
         "alt_image": "/attachment/mockup_1.png",
-        "tech": [
-          "NuxtJS",
-          "Tailwind"
-        ]
+        "tech": ["NuxtJS", "Tailwind"]
       },
       {
         "name": "E-Commerce Analytics",
@@ -100,11 +79,7 @@
         "link": "#",
         "image": "",
         "alt_image": "/attachment/mockup_1.png",
-        "tech": [
-          "React",
-          "TypeScript",
-          "D3.js"
-        ]
+        "tech": ["React", "TypeScript", "D3.js"]
       }
     ]
   },
@@ -136,7 +111,13 @@
         "area": "Full-Stack Development",
         "level": 90,
         "description": "Expertise in building complete web applications from database to UI",
-        "technologies": ["React", "Vue 3", "Node.js", "Python/Django", "Laravel"]
+        "technologies": [
+          "React",
+          "Vue 3",
+          "Node.js",
+          "Python/Django",
+          "Laravel"
+        ]
       },
       {
         "area": "Mobile Applications",
@@ -163,14 +144,7 @@
     "categories": [
       {
         "name": "LANGUAGES",
-        "items": [
-          "TypeScript",
-          "JavaScript",
-          "HTML",
-          "Java",
-          "PHP",
-          "Python"
-        ]
+        "items": ["TypeScript", "JavaScript", "HTML", "Java", "PHP", "Python"]
       },
       {
         "name": "FRAMEWORKS",
@@ -187,31 +161,15 @@
       },
       {
         "name": "DATABASES",
-        "items": [
-          "PostgreSQL",
-          "MySQL",
-          "Supabase",
-          "Oracle"
-        ]
+        "items": ["PostgreSQL", "MySQL", "Supabase", "Oracle"]
       },
       {
         "name": "UI & STYLING",
-        "items": [
-          "shadcn",
-          "Mantine",
-          "Tailwind",
-          "Bootstrap"
-        ]
+        "items": ["shadcn", "Mantine", "Tailwind", "Bootstrap"]
       },
       {
         "name": "SERVERS",
-        "items": [
-          "Apache",
-          "Nginx",
-          "Cloudflare",
-          "Kubernetes",
-          "Docker"
-        ]
+        "items": ["Apache", "Nginx", "Cloudflare", "Kubernetes", "Docker"]
       }
     ]
   },
