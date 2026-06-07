@@ -42,6 +42,22 @@
         "tech": ["CodeIgniter 3", "Bootstrap 3", "Jquery", "PostgreSQL"]
       },
       {
+        "name": "PCMS - Warehouse",
+        "description": "A fabrication project management system covering CNC, welding, assembly, QA/QC, NDT, material traceability, Inspection Release Note, and blasting painting stages.",
+        "link": "",
+        "image": "",
+        "alt_image": "/attachment/mockup_1.png",
+        "tech": ["CodeIgniter 3", "Bootstrap 3", "Jquery", "PostgreSQL"]
+      },
+      {
+        "name": "PCMS - Engineering",
+        "description": "A fabrication project management system covering CNC, welding, assembly, QA/QC, NDT, material traceability, Inspection Release Note, and blasting painting stages.",
+        "link": "",
+        "image": "",
+        "alt_image": "/attachment/mockup_1.png",
+        "tech": ["CodeIgniter 3", "Bootstrap 3", "Jquery", "PostgreSQL"]
+      },
+      {
         "name": "O&M Centralized - Share Drive",
         "description": "A web-based Application to serve as a centralized, secure document repository for Operations & Maintenance (O&M) teams. Functioning similarly to a cloud drive (e.g. Google Drive).",
         "link": "/attachment/om_sharedrive_preview.pdf",
@@ -50,7 +66,39 @@
         "tech": ["Codeigniter 3", "Bootstrap 4", "Jquery", "Synologi"]
       },
       {
-        "name": "ISS - Internal Service System",
+        "name": "O&M Centralized - Checklist Inspection",
+        "description": "A web-based Application to serve as a centralized, secure document repository for Operations & Maintenance (O&M) teams. Functioning similarly to a cloud drive (e.g. Google Drive).",
+        "link": "/attachment/om_sharedrive_preview.pdf",
+        "image": "/attachment/cover_om-sharedrive.png",
+        "alt_image": "/attachment/mockup_1.png",
+        "tech": ["Codeigniter 3", "Bootstrap 4", "Jquery", "Synologi"]
+      },
+      {
+        "name": "O&M Centralized - Request Booking System (Equipment & Land)",
+        "description": "A web-based Application to serve as a centralized, secure document repository for Operations & Maintenance (O&M) teams. Functioning similarly to a cloud drive (e.g. Google Drive).",
+        "link": "/attachment/om_sharedrive_preview.pdf",
+        "image": "/attachment/cover_om-sharedrive.png",
+        "alt_image": "/attachment/mockup_1.png",
+        "tech": ["Codeigniter 3", "Bootstrap 4", "Jquery", "Synologi"]
+      },
+      {
+        "name": "ISS - Contract Digital",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "alt_image": "/attachment/mockup_1.png",
+        "tech": ["Vue 3", "Tailwind", "Motion"]
+      },
+      {
+        "name": "ISS - Recruitment",
+        "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
+        "link": "https://github.com",
+        "image": "",
+        "alt_image": "/attachment/mockup_1.png",
+        "tech": ["Vue 3", "Tailwind", "Motion"]
+      },
+      {
+        "name": "ISS - Attendance & Overtime",
         "description": "A completely data-driven Vue 3 portfolio mirroring a highly premium dark theme design.",
         "link": "https://github.com",
         "image": "",
