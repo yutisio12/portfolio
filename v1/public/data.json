@@ -1,5 +1,5 @@
 {
-  "theme": {
+  "theme_dark": {
     "background": "#0B1622",
     "foreground": "#E8F4F8",
     "primary": "#00BFA6",
@@ -8,6 +8,16 @@
     "muted_foreground": "#5BA8A0",
     "card": "#0F1C2C",
     "border": "#1C3348"
+  },
+  "theme_light": {
+    "background": "#2e2e2e",
+    "foreground": "#d6d6d6",
+    "primary": "#e5b567",
+    "primary_foreground": "#2e2e2e",
+    "muted": "#3b3b3b",
+    "muted_foreground": "#797979",
+    "card": "#363636",
+    "border": "#454545"
   },
   "general": {
     "loading": "Initializing Sequence...",
