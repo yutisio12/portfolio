@@ -3,46 +3,42 @@
 @tailwind utilities;
 
 @layer base {
-  /* Light mode: Monokai Sublime 3 palette */
   :root {
-    --background: 0 0% 18%;
-    /* #2e2e2e Background */
-    --foreground: 0 0% 84%;
-    /* #d6d6d6 White */
+    --background: #272822;
+    --foreground: #F8F8F2;
 
-    --muted: 0 0% 23%;
-    --muted-foreground: 0 0% 47%;
-    /* #797979 Comments */
+    --muted: #2D2D28;
+    --muted-foreground: #75715E;
 
-    --popover: 0 0% 21%;
-    --popover-foreground: 0 0% 84%;
+    --popover: #1E1E1A;
+    --popover-foreground: #F8F8F2;
 
-    --card: 0 0% 21%;
-    --card-foreground: 0 0% 84%;
+    --card: #292923;
+    --card-foreground: #F8F8F2;
 
-    --border: 0 0% 27%;
-    /* #454545 */
-    --input: 0 0% 27%;
+    --border: #373730;
+    --input: #373730;
 
-    --primary: 37 71% 65%;
-    /* #e5b567 Yellow */
-    --primary-foreground: 0 0% 18%;
-    /* #2e2e2e Background */
+    --primary: #66D9EF;
+    --primary-foreground: #272822;
 
-    --secondary: 206 37% 58%;
-    /* #6c99bb Blue */
-    --secondary-foreground: 0 0% 18%;
+    --secondary: #F92672;
+    --secondary-foreground: #272822;
 
-    --destructive: 22 79% 58%;
-    /* #e87d3e Orange */
-    --destructive-foreground: 0 0% 18%;
+    --destructive: #FD971F;
+    --destructive-foreground: #272822;
 
-    --accent: 79 51% 64%;
-    /* #b4d273 Green */
-    --accent-foreground: 0 0% 18%;
+    --accent: #E6DB74;
+    --accent-foreground: #272822;
 
-    --ring: 37 71% 65%;
-    /* #e5b567 Yellow */
+    --warning: #A6E22E;
+    --warning-foreground: #272822;
+
+    --chart-1: #AE81FF;
+
+    --highlight: #F92672;
+
+    --ring: #66D9EF;
 
     --radius: 0rem;
 
@@ -50,36 +46,42 @@
     color-scheme: dark;
   }
 
-  /* Dark mode: original dark theme */
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: #282C34;
+    --foreground: #ABB2BF;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 215.4 16.3% 60%;
+    --muted: #2C313A;
+    --muted-foreground: #5C6370;
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --popover: #22252B;
+    --popover-foreground: #ABB2BF;
 
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 100%;
+    --card: #2C313A;
+    --card-foreground: #ABB2BF;
 
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
+    --border: #3E4451;
+    --input: #3E4451;
 
-    --primary: 168 100% 37%;
-    --primary-foreground: 210 50% 9%;
+    --primary: #61AFEF;
+    --primary-foreground: #282C34;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: #E06C75;
+    --secondary-foreground: #282C34;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: #C678DD;
+    --destructive-foreground: #282C34;
 
-    --accent: 0 0% 10%;
-    --accent-foreground: 0 0% 100%;
+    --accent: #98C379;
+    --accent-foreground: #282C34;
 
-    --ring: 168 100% 37%;
+    --warning: #D19A66;
+    --warning-foreground: #282C34;
+
+    --chart-1: #56B6C2;
+
+    --highlight: #E5C07B;
+
+    --ring: #61AFEF;
 
     color-scheme: dark;
   }
@@ -105,26 +107,26 @@
   }
 
   .text-stroke-1 {
-    -webkit-text-stroke: 1px rgba(214, 214, 214, 0.3);
+    -webkit-text-stroke: 1px rgba(248, 248, 242, 0.3);
   }
 
   .dark .text-stroke-1 {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    -webkit-text-stroke: 1px rgba(171, 178, 191, 0.3);
   }
 
   .text-stroke-2 {
-    -webkit-text-stroke: 2px rgba(214, 214, 214, 0.4);
+    -webkit-text-stroke: 2px rgba(248, 248, 242, 0.4);
   }
 
   .dark .text-stroke-2 {
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.4);
+    -webkit-text-stroke: 2px rgba(171, 178, 191, 0.4);
   }
 
   .vignette-glow {
-    box-shadow: inset 0 0 150px rgba(229, 181, 103, 0.08);
+    box-shadow: inset 0 0 150px rgba(102, 217, 239, 0.08);
   }
 
   .dark .vignette-glow {
-    box-shadow: inset 0 0 150px rgba(0, 50, 150, 0.15);
+    box-shadow: inset 0 0 150px rgba(97, 175, 239, 0.08);
   }
 }

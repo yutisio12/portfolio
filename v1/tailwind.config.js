@@ -54,6 +54,12 @@ module.exports = {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
+        warning: {
+          DEFAULT: "var(--warning)",
+          foreground: "var(--warning-foreground)",
+        },
+        "chart-1": "var(--chart-1)",
+        highlight: "var(--highlight)",
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",

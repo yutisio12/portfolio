@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 const props = defineProps<{
   isDark: boolean
@@ -19,7 +19,17 @@ onMounted(() => {
   canvas.width = width
   canvas.height = height
 
-  const particles: Array<{ x: number; y: number; radius: number; vx: number; vy: number; alpha: number }> = []
+  const particles: Array<{ x: number; y: number; radius: number; vx: number; vy: number; alpha: number; color: string }> = []
+
+  const themeColors = [
+    props.isDark ? 'rgba(97, 175, 239, 1)' : 'rgba(102, 217, 239, 1)',
+    props.isDark ? 'rgba(224, 108, 117, 1)' : 'rgba(249, 38, 114, 1)',
+    props.isDark ? 'rgba(152, 187, 121, 1)' : 'rgba(230, 219, 116, 1)',
+    props.isDark ? 'rgba(198, 120, 221, 1)' : 'rgba(253, 151, 31, 1)',
+    props.isDark ? 'rgba(209, 154, 102, 1)' : 'rgba(166, 226, 46, 1)',
+    props.isDark ? 'rgba(86, 182, 194, 1)' : 'rgba(174, 129, 255, 1)',
+    props.isDark ? 'rgba(229, 192, 123, 1)' : 'rgba(249, 38, 114, 1)',
+  ]
 
   for (let i = 0; i < 150; i++) {
     particles.push({
@@ -28,15 +38,13 @@ onMounted(() => {
       radius: Math.random() * 1.5,
       vx: (Math.random() - 0.5) * 0.2,
       vy: (Math.random() - 0.5) * 0.2,
-      alpha: Math.random() * 0.5 + 0.1
+      alpha: Math.random() * 0.5 + 0.1,
+      color: themeColors[i % themeColors.length]
     })
   }
 
-  const getParticleColor = () => props.isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(214, 214, 214, 1)'
-
   const animate = () => {
     ctx.clearRect(0, 0, width, height)
-    ctx.fillStyle = getParticleColor()
 
     particles.forEach((p) => {
       p.x += p.vx
@@ -48,6 +56,7 @@ onMounted(() => {
       if (p.y > height) p.y = 0
 
       ctx.globalAlpha = p.alpha
+      ctx.fillStyle = p.color
       ctx.beginPath()
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
       ctx.fill()

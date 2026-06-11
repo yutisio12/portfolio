@@ -108,10 +108,20 @@ const customStyles = computed(() => {
     "--foreground": t.foreground,
     "--primary": t.primary,
     "--primary-foreground": t.primary_foreground,
+    "--secondary": t.secondary,
+    "--secondary-foreground": t.secondary_foreground,
+    "--accent": t.accent,
+    "--accent-foreground": t.accent_foreground,
+    "--destructive": t.destructive,
+    "--destructive-foreground": t.destructive_foreground,
     "--muted": t.muted,
     "--muted-foreground": t.muted_foreground,
     "--card": t.card,
     "--border": t.border,
+    "--warning": t.warning,
+    "--chart-1": t.chart_1,
+    "--highlight": t.highlight,
+    "--ring": t.ring,
   };
 });
 
@@ -147,7 +157,7 @@ const getTechIconUrl = (name: string) => {
 };
 
 const heroLineColor = computed(() => {
-  return isDark.value ? '#FFFFFF' : '#d6d6d6';
+  return isDark.value ? '#E06C75' : '#F92672';
 });
 </script>
 
@@ -176,9 +186,9 @@ const heroLineColor = computed(() => {
 
     <div v-if="loading" class="flex items-center justify-center min-h-screen">
       <div
-        class="animate-pulse text-muted-foreground font-mono-accent text-sm tracking-widest uppercase"
-      >
-        Loading...
+          class="animate-pulse text-highlight font-mono-accent text-sm tracking-widest uppercase"
+        >
+          Loading...
       </div>
     </div>
 
@@ -217,10 +227,10 @@ const heroLineColor = computed(() => {
           class="absolute bottom-16 w-full flex justify-center"
         >
           <div
-            class="bg-primary text-primary-foreground font-mono-accent font-bold px-4 py-2 text-xs sm:text-sm uppercase flex items-center gap-3"
+            class="bg-destructive text-destructive-foreground font-mono-accent font-bold px-4 py-2 text-xs sm:text-sm uppercase flex items-center gap-3"
           >
             <span
-              class="w-2 h-2 rounded-full bg-primary-foreground animate-pulse"
+              class="w-2 h-2 rounded-full bg-destructive-foreground animate-pulse"
             ></span>
             {{ data.profile.years_experience }}
             {{ data.general.experience_label }}
@@ -319,14 +329,14 @@ const heroLineColor = computed(() => {
             >
               <!-- Index badge -->
               <div
-                class="absolute top-8 right-8 font-mono-accent text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity tracking-widest"
+                class="absolute top-8 right-8 font-mono-accent text-xs text-highlight opacity-0 group-hover:opacity-100 transition-opacity tracking-widest"
               >
                 {{ String( Number(i) + 1 ).padStart(2, '0') }}
               </div>
 
               <!-- Accent dot -->
               <div
-                class="absolute top-8 right-20 w-3 h-3 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"
+                class="absolute top-8 right-20 w-3 h-3 bg-accent opacity-0 group-hover:opacity-100 transition-opacity"
               ></div>
 
               <div class="flex flex-col gap-4">
@@ -420,9 +430,9 @@ const heroLineColor = computed(() => {
 
         <!-- STACK -->
         <section class="space-y-12 relative py-12" v-if="data.stack">
-          <div
-            class="absolute right-[-1.5rem] sm:-right-6 top-0 bottom-0 w-2 sm:w-3 bg-primary"
-          ></div>
+            <div
+                class="absolute right-[-1.5rem] sm:-right-6 top-0 bottom-0 w-2 sm:w-3 bg-warning"
+              ></div>
 
           <div class="space-y-2 pr-12">
             <h2
@@ -448,7 +458,7 @@ const heroLineColor = computed(() => {
               class="space-y-8 pb-12 border-b border-border last:border-0 relative"
             >
               <h4
-                class="text-3xl sm:text-4xl md:text-5xl font-heading text-primary uppercase tracking-wide"
+                class="text-3xl sm:text-4xl md:text-5xl font-heading text-chart-1 uppercase tracking-wide"
               >
                 {{ cat.name }}
               </h4>
@@ -558,7 +568,7 @@ const heroLineColor = computed(() => {
             class="border border-border p-6 md:p-12 bg-card hover:bg-muted transition-colors relative overflow-hidden group space-y-8 flex flex-col"
           >
             <div
-              class="absolute top-8 right-8 w-3 h-3 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"
+              class="absolute top-8 right-8 w-3 h-3 bg-accent opacity-0 group-hover:opacity-100 transition-opacity"
             ></div>
 
             <div
@@ -592,7 +602,7 @@ const heroLineColor = computed(() => {
               class="w-full overflow-x-auto overflow-y-hidden pt-8 border-t border-border mt-8"
             >
               <img
-                :src="`https://ghchart.rshah.org/${isDark ? (data.theme_dark && data.theme_dark.primary ? data.theme_dark.primary.replace('#', '') : '00BFA6') : (data.theme_light && data.theme_light.primary ? data.theme_light.primary.replace('#', '') : 'F92672')}/${data.github_calendar.username}`"
+                :src="`https://ghchart.rshah.org/${isDark ? (data.theme_dark && data.theme_dark.primary ? data.theme_dark.primary.replace('#', '') : '61AFEF') : (data.theme_light && data.theme_light.primary ? data.theme_light.primary.replace('#', '') : '66D9EF')}/${data.github_calendar.username}`"
                 alt="GitHub Contributions Calendar"
                 class="min-w-[700px] w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity"
               />
@@ -887,7 +897,7 @@ html {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(11, 22, 34, 0.85);
+  background: rgba(40, 44, 52, 0.85);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -896,7 +906,7 @@ html {
 }
 
 :root .pdf-modal-overlay {
-  background: rgba(46, 46, 46, 0.85);
+  background: rgba(39, 40, 34, 0.85);
 }
 
 .pdf-modal-container {
@@ -908,11 +918,11 @@ html {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 0 60px rgba(0, 191, 166, 0.12), 0 0 0 1px var(--border);
+  box-shadow: 0 0 60px rgba(97, 175, 239, 0.12), 0 0 0 1px var(--border);
 }
 
 :root .pdf-modal-container {
-  box-shadow: 0 0 60px rgba(176, 82, 121, 0.12), 0 0 0 1px var(--border);
+  box-shadow: 0 0 60px rgba(102, 217, 239, 0.12), 0 0 0 1px var(--border);
 }
 
 .pdf-modal-header {
@@ -1030,23 +1040,23 @@ html {
   max-width: 1100px;
   height: 85dvh;
   background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(171, 178, 191, 0.08);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   box-shadow:
-    0 0 0 0.5px rgba(255, 255, 255, 0.06),
+    0 0 0 0.5px rgba(171, 178, 191, 0.06),
     0 22px 70px 4px rgba(0, 0, 0, 0.56),
-    0 0 40px rgba(0, 191, 166, 0.06);
+    0 0 40px rgba(97, 175, 239, 0.06);
 }
 
 :root .safari-window {
-  border: 1px solid rgba(214, 214, 214, 0.08);
+  border: 1px solid rgba(248, 248, 242, 0.08);
   box-shadow:
-    0 0 0 0.5px rgba(214, 214, 214, 0.06),
+    0 0 0 0.5px rgba(248, 248, 242, 0.06),
     0 22px 70px 4px rgba(0, 0, 0, 0.56),
-    0 0 40px rgba(176, 82, 121, 0.08);
+    0 0 40px rgba(102, 217, 239, 0.08);
 }
 
 /* Tab bar */
@@ -1056,14 +1066,14 @@ html {
   height: 38px;
   padding: 0 12px;
   background: linear-gradient(180deg, rgba(58, 58, 60, 0.45) 0%, rgba(44, 44, 46, 0.55) 100%);
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 0.5px solid rgba(171, 178, 191, 0.06);
   flex-shrink: 0;
   gap: 12px;
 }
 
 :root .safari-tabbar {
   background: linear-gradient(180deg, rgba(59, 59, 59, 0.6) 0%, rgba(54, 54, 54, 0.7) 100%);
-  border-bottom: 0.5px solid rgba(214, 214, 214, 0.06);
+  border-bottom: 0.5px solid rgba(248, 248, 242, 0.06);
 }
 
 .safari-dots {
@@ -1135,7 +1145,7 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(171, 178, 191, 0.85);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1143,7 +1153,7 @@ html {
 }
 
 :root .safari-tab-title {
-  color: rgba(214, 214, 214, 0.85);
+  color: rgba(248, 248, 242, 0.85);
 }
 
 /* Toolbar */
@@ -1153,14 +1163,14 @@ html {
   height: 40px;
   padding: 0 12px;
   background: linear-gradient(180deg, rgba(44, 44, 46, 0.55) 0%, rgba(36, 36, 38, 0.6) 100%);
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 0.5px solid rgba(171, 178, 191, 0.06);
   gap: 10px;
   flex-shrink: 0;
 }
 
 :root .safari-toolbar {
   background: linear-gradient(180deg, rgba(54, 54, 54, 0.7) 0%, rgba(46, 46, 46, 0.75) 100%);
-  border-bottom: 0.5px solid rgba(214, 214, 214, 0.06);
+  border-bottom: 0.5px solid rgba(248, 248, 242, 0.06);
 }
 
 .safari-nav-group {
@@ -1175,7 +1185,7 @@ html {
   height: 28px;
   border: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(171, 178, 191, 0.3);
   cursor: default;
   display: flex;
   align-items: center;
@@ -1185,24 +1195,24 @@ html {
 }
 
 .safari-nav-btn:enabled {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(171, 178, 191, 0.65);
   cursor: pointer;
 }
 
 .safari-nav-btn:enabled:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(171, 178, 191, 0.08);
 }
 
 :root .safari-nav-btn {
-  color: rgba(214, 214, 214, 0.3);
+  color: rgba(248, 248, 242, 0.3);
 }
 
 :root .safari-nav-btn:enabled {
-  color: rgba(214, 214, 214, 0.65);
+  color: rgba(248, 248, 242, 0.65);
 }
 
 :root .safari-nav-btn:enabled:hover {
-  background: rgba(214, 214, 214, 0.08);
+  background: rgba(248, 248, 242, 0.08);
 }
 
 .safari-url-bar {
@@ -1211,8 +1221,8 @@ html {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  background: rgba(171, 178, 191, 0.06);
+  border: 0.5px solid rgba(171, 178, 191, 0.08);
   border-radius: 8px;
   padding: 0 14px;
   height: 28px;
@@ -1222,23 +1232,23 @@ html {
 }
 
 :root .safari-url-bar {
-  background: rgba(214, 214, 214, 0.06);
-  border: 0.5px solid rgba(214, 214, 214, 0.08);
+  background: rgba(248, 248, 242, 0.06);
+  border: 0.5px solid rgba(248, 248, 242, 0.08);
 }
 
 .safari-lock-icon {
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(171, 178, 191, 0.35);
   flex-shrink: 0;
 }
 
 :root .safari-lock-icon {
-  color: rgba(214, 214, 214, 0.35);
+  color: rgba(248, 248, 242, 0.35);
 }
 
 .safari-url-text {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(171, 178, 191, 0.5);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1247,7 +1257,7 @@ html {
 }
 
 :root .safari-url-text {
-  color: rgba(214, 214, 214, 0.5);
+  color: rgba(248, 248, 242, 0.5);
 }
 
 .safari-actions {
@@ -1262,7 +1272,7 @@ html {
   height: 28px;
   border: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(171, 178, 191, 0.45);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1274,17 +1284,17 @@ html {
 }
 
 .safari-action-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.08);
+  color: rgba(171, 178, 191, 0.8);
+  background: rgba(171, 178, 191, 0.08);
 }
 
 :root .safari-action-btn {
-  color: rgba(214, 214, 214, 0.45);
+  color: rgba(248, 248, 242, 0.45);
 }
 
 :root .safari-action-btn:hover {
-  color: rgba(214, 214, 214, 0.8);
-  background: rgba(214, 214, 214, 0.08);
+  color: rgba(248, 248, 242, 0.8);
+  background: rgba(248, 248, 242, 0.08);
 }
 
 /* Body */
@@ -1329,17 +1339,17 @@ html {
   height: 12px;
 }
 
-.browser-loading-text {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: var(--muted-foreground);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
+  .browser-loading-text {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--highlight);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
 
 .loading-dots::after {
   content: '';
