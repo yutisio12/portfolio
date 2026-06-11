@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, nextTick } from "vue";
+import { ref, onMounted, computed, nextTick, watch } from "vue";
 import ParticleBackground from "./components/ParticleBackground.vue";
 
 const data = ref<any>(null);
@@ -9,6 +9,33 @@ const selectedAttachment = ref<{ title: string; url: string } | null>(null);
 const selectedProject = ref<{ name: string; link: string } | null>(null);
 const iframeError = ref(false);
 const iframeLoading = ref(false);
+
+// Theme toggle
+const isDark = ref(true);
+
+const toggleTheme = () => {
+  isDark.value = !isDark.value;
+};
+
+watch(isDark, (val) => {
+  if (val) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+  localStorage.setItem("theme", val ? "dark" : "light");
+});
+
+onMounted(() => {
+  const saved = localStorage.getItem("theme");
+  if (saved === "light") {
+    isDark.value = false;
+    document.documentElement.classList.remove("dark");
+  } else {
+    isDark.value = true;
+    document.documentElement.classList.add("dark");
+  }
+});
 
 const openModal = (title: string, url: string) => {
   selectedAttachment.value = { title, url };
@@ -74,8 +101,8 @@ onMounted(async () => {
 });
 
 const customStyles = computed(() => {
-  if (!data.value?.theme) return {};
-  const t = data.value.theme;
+  const t = isDark.value ? data.value?.theme_dark : data.value?.theme_light;
+  if (!t) return {};
   return {
     "--background": t.background,
     "--foreground": t.foreground,
@@ -118,6 +145,10 @@ const getTechIconUrl = (name: string) => {
   const mapped = map[n] || n;
   return `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${mapped}/${mapped}-original.svg`;
 };
+
+const heroLineColor = computed(() => {
+  return isDark.value ? '#FFFFFF' : '#d6d6d6';
+});
 </script>
 
 <template>
@@ -125,7 +156,23 @@ const getTechIconUrl = (name: string) => {
     :style="customStyles"
     class="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-foreground vignette-glow relative overflow-hidden"
   >
-    <ParticleBackground />
+    <ParticleBackground :is-dark="isDark" />
+
+    <!-- Theme Toggle -->
+    <button
+      @click="toggleTheme"
+      class="fixed top-6 right-6 z-50 w-10 h-10 flex items-center justify-center border border-border bg-card hover:bg-muted transition-colors cursor-pointer"
+      :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+    >
+      <!-- Sun icon (show in dark mode) -->
+      <svg v-if="isDark" class="w-5 h-5 text-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <!-- Moon icon (show in light mode) -->
+      <svg v-else class="w-5 h-5 text-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+      </svg>
+    </button>
 
     <div v-if="loading" class="flex items-center justify-center min-h-screen">
       <div
@@ -150,8 +197,8 @@ const getTechIconUrl = (name: string) => {
             {{ data.profile.name }}
           </h1>
           <div
-            class="absolute left-0 right-0 top-1/2 h-[2px] bg-primary -translate-y-1/2 w-full sm:w-[120%] sm:-ml-[10%] z-20 rotate-0"
-            style="background-color: #FFFFFF"
+            class="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 w-full sm:w-[120%] sm:-ml-[10%] z-20 rotate-0"
+            :style="{ backgroundColor: heroLineColor }"
           ></div>
         </div>
 
@@ -170,10 +217,10 @@ const getTechIconUrl = (name: string) => {
           class="absolute bottom-16 w-full flex justify-center"
         >
           <div
-            class="bg-primary text-background font-mono-accent font-bold px-4 py-2 text-xs sm:text-sm uppercase flex items-center gap-3"
+            class="bg-primary text-primary-foreground font-mono-accent font-bold px-4 py-2 text-xs sm:text-sm uppercase flex items-center gap-3"
           >
             <span
-              class="w-2 h-2 rounded-full bg-background animate-pulse"
+              class="w-2 h-2 rounded-full bg-primary-foreground animate-pulse"
             ></span>
             {{ data.profile.years_experience }}
             {{ data.general.experience_label }}
@@ -545,7 +592,7 @@ const getTechIconUrl = (name: string) => {
               class="w-full overflow-x-auto overflow-y-hidden pt-8 border-t border-border mt-8"
             >
               <img
-                :src="`https://ghchart.rshah.org/${data.theme && data.theme.primary ? data.theme.primary.replace('#', '') : 'F97316'}/${data.github_calendar.username}`"
+                :src="`https://ghchart.rshah.org/${isDark ? (data.theme_dark && data.theme_dark.primary ? data.theme_dark.primary.replace('#', '') : '00BFA6') : (data.theme_light && data.theme_light.primary ? data.theme_light.primary.replace('#', '') : 'F92672')}/${data.github_calendar.username}`"
                 alt="GitHub Contributions Calendar"
                 class="min-w-[700px] w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity"
               />
@@ -833,7 +880,6 @@ const getTechIconUrl = (name: string) => {
 <style>
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
 /* ── PDF Modal ─────────────────────────────────────────────── */
@@ -849,6 +895,10 @@ html {
   padding: 1rem;
 }
 
+:root .pdf-modal-overlay {
+  background: rgba(46, 46, 46, 0.85);
+}
+
 .pdf-modal-container {
   width: 100%;
   max-width: 900px;
@@ -859,6 +909,10 @@ html {
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 0 60px rgba(0, 191, 166, 0.12), 0 0 0 1px var(--border);
+}
+
+:root .pdf-modal-container {
+  box-shadow: 0 0 60px rgba(176, 82, 121, 0.12), 0 0 0 1px var(--border);
 }
 
 .pdf-modal-header {
@@ -987,6 +1041,14 @@ html {
     0 0 40px rgba(0, 191, 166, 0.06);
 }
 
+:root .safari-window {
+  border: 1px solid rgba(214, 214, 214, 0.08);
+  box-shadow:
+    0 0 0 0.5px rgba(214, 214, 214, 0.06),
+    0 22px 70px 4px rgba(0, 0, 0, 0.56),
+    0 0 40px rgba(176, 82, 121, 0.08);
+}
+
 /* Tab bar */
 .safari-tabbar {
   display: flex;
@@ -997,6 +1059,11 @@ html {
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
   flex-shrink: 0;
   gap: 12px;
+}
+
+:root .safari-tabbar {
+  background: linear-gradient(180deg, rgba(59, 59, 59, 0.6) 0%, rgba(54, 54, 54, 0.7) 100%);
+  border-bottom: 0.5px solid rgba(214, 214, 214, 0.06);
 }
 
 .safari-dots {
@@ -1060,6 +1127,10 @@ html {
   background: rgba(70, 70, 74, 0.6);
 }
 
+:root .safari-tab--active {
+  background: rgba(69, 69, 69, 0.6);
+}
+
 .safari-tab-title {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   font-size: 0.7rem;
@@ -1069,6 +1140,10 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+}
+
+:root .safari-tab-title {
+  color: rgba(214, 214, 214, 0.85);
 }
 
 /* Toolbar */
@@ -1081,6 +1156,11 @@ html {
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
   gap: 10px;
   flex-shrink: 0;
+}
+
+:root .safari-toolbar {
+  background: linear-gradient(180deg, rgba(54, 54, 54, 0.7) 0%, rgba(46, 46, 46, 0.75) 100%);
+  border-bottom: 0.5px solid rgba(214, 214, 214, 0.06);
 }
 
 .safari-nav-group {
@@ -1113,6 +1193,18 @@ html {
   background: rgba(255, 255, 255, 0.08);
 }
 
+:root .safari-nav-btn {
+  color: rgba(214, 214, 214, 0.3);
+}
+
+:root .safari-nav-btn:enabled {
+  color: rgba(214, 214, 214, 0.65);
+}
+
+:root .safari-nav-btn:enabled:hover {
+  background: rgba(214, 214, 214, 0.08);
+}
+
 .safari-url-bar {
   flex: 1;
   display: flex;
@@ -1129,9 +1221,18 @@ html {
   min-width: 0;
 }
 
+:root .safari-url-bar {
+  background: rgba(214, 214, 214, 0.06);
+  border: 0.5px solid rgba(214, 214, 214, 0.08);
+}
+
 .safari-lock-icon {
   color: rgba(255, 255, 255, 0.35);
   flex-shrink: 0;
+}
+
+:root .safari-lock-icon {
+  color: rgba(214, 214, 214, 0.35);
 }
 
 .safari-url-text {
@@ -1143,6 +1244,10 @@ html {
   text-overflow: ellipsis;
   text-align: center;
   letter-spacing: 0.01em;
+}
+
+:root .safari-url-text {
+  color: rgba(214, 214, 214, 0.5);
 }
 
 .safari-actions {
@@ -1171,6 +1276,15 @@ html {
 .safari-action-btn:hover {
   color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.08);
+}
+
+:root .safari-action-btn {
+  color: rgba(214, 214, 214, 0.45);
+}
+
+:root .safari-action-btn:hover {
+  color: rgba(214, 214, 214, 0.8);
+  background: rgba(214, 214, 214, 0.08);
 }
 
 /* Body */

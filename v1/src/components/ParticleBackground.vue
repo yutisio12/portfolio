@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
+
+const props = defineProps<{
+  isDark: boolean
+}>()
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 let animationFrameId: number
@@ -28,9 +32,11 @@ onMounted(() => {
     })
   }
 
+  const getParticleColor = () => props.isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(214, 214, 214, 1)'
+
   const animate = () => {
     ctx.clearRect(0, 0, width, height)
-    ctx.fillStyle = 'rgba(255, 255, 255, 1)'
+    ctx.fillStyle = getParticleColor()
 
     particles.forEach((p) => {
       p.x += p.vx
