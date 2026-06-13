@@ -1,0 +1,26 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# Admin API — redirect ke serverless function
+[[redirects]]
+  from = "/api/admin/data"
+  to = "/.netlify/functions/admin"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/admin/save"
+  to = "/.netlify/functions/admin"
+  status = 200
+  force = true
+
+# SPA fallback — semua route lain serve index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  framework = "vite"
