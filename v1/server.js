@@ -1,3 +1,8 @@
+// ============================================================
+// DEPRECATED — Digantikan oleh netlify/functions/admin.mjs
+// Untuk development Netlify, gunakan: netlify dev
+// ============================================================
+/*
 import express from 'express'
 import cors from 'cors'
 import fs from 'fs'
@@ -61,3 +66,4 @@ app.get('/{*splat}', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Admin server running on http://localhost:${PORT}`)
 })
+*/
