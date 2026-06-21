@@ -1,25 +1,5 @@
 {
   "theme_dark": {
-    "background": "#282C34",
-    "foreground": "#ABB2BF",
-    "primary": "#61AFEF",
-    "primary_foreground": "#282C34",
-    "secondary": "#E06C75",
-    "secondary_foreground": "#282C34",
-    "accent": "#98C379",
-    "accent_foreground": "#282C34",
-    "destructive": "#C678DD",
-    "destructive_foreground": "#282C34",
-    "muted": "#2C313A",
-    "muted_foreground": "#5C6370",
-    "card": "#2C313A",
-    "border": "#3E4451",
-    "warning": "#D19A66",
-    "chart_1": "#56B6C2",
-    "highlight": "#E5C07B",
-    "ring": "#61AFEF"
-  },
-  "theme_light": {
     "background": "#272822",
     "foreground": "#F8F8F2",
     "primary": "#66D9EF",
@@ -38,6 +18,26 @@
     "chart_1": "#AE81FF",
     "highlight": "#F92672",
     "ring": "#66D9EF"
+  },
+  "theme_light": {
+    "background": "#FFFAFF",
+    "foreground": "#0A2463",
+    "primary": "#3E92CC",
+    "primary_foreground": "#FFFFFF",
+    "secondary": "#D8315B",
+    "secondary_foreground": "#FFFFFF",
+    "accent": "#1E035A",
+    "accent_foreground": "#FFFAFF",
+    "destructive": "#D8315B",
+    "destructive_foreground": "#FFFFFF",
+    "muted": "#F0EDF5",
+    "muted_foreground": "#6B5E85",
+    "card": "#FFFFFF",
+    "border": "#D8D5E0",
+    "warning": "#FFB347",
+    "chart_1": "#3E92CC",
+    "highlight": "#D8315B",
+    "ring": "#3E92CC"
   },
   "general": {
     "loading": "Initializing Sequence...",
