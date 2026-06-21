@@ -29,16 +29,12 @@ html {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(40, 44, 52, 0.85);
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
-}
-
-:root .pdf-modal-overlay {
-  background: rgba(39, 40, 34, 0.85);
 }
 
 .pdf-modal-container {
@@ -50,11 +46,7 @@ html {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 0 60px rgba(97, 175, 239, 0.12), 0 0 0 1px var(--border);
-}
-
-:root .pdf-modal-container {
-  box-shadow: 0 0 60px rgba(102, 217, 239, 0.12), 0 0 0 1px var(--border);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--border);
 }
 
 .pdf-modal-header {
@@ -172,23 +164,15 @@ html {
   max-width: 1100px;
   height: 85dvh;
   background: var(--card);
-  border: 1px solid rgba(171, 178, 191, 0.08);
+  border: 1px solid var(--border);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   box-shadow:
-    0 0 0 0.5px rgba(171, 178, 191, 0.06),
+    0 0 0 0.5px var(--border),
     0 22px 70px 4px rgba(0, 0, 0, 0.56),
-    0 0 40px rgba(97, 175, 239, 0.06);
-}
-
-:root .safari-window {
-  border: 1px solid rgba(248, 248, 242, 0.08);
-  box-shadow:
-    0 0 0 0.5px rgba(248, 248, 242, 0.06),
-    0 22px 70px 4px rgba(0, 0, 0, 0.56),
-    0 0 40px rgba(102, 217, 239, 0.08);
+    0 0 40px rgba(0, 0, 0, 0.06);
 }
 
 /* Tab bar */
@@ -197,15 +181,10 @@ html {
   align-items: center;
   height: 38px;
   padding: 0 12px;
-  background: linear-gradient(180deg, rgba(58, 58, 60, 0.45) 0%, rgba(44, 44, 46, 0.55) 100%);
-  border-bottom: 0.5px solid rgba(171, 178, 191, 0.06);
+  background: var(--muted);
+  border-bottom: 0.5px solid var(--border);
   flex-shrink: 0;
   gap: 12px;
-}
-
-:root .safari-tabbar {
-  background: linear-gradient(180deg, rgba(59, 59, 59, 0.6) 0%, rgba(54, 54, 54, 0.7) 100%);
-  border-bottom: 0.5px solid rgba(248, 248, 242, 0.06);
 }
 
 .safari-dots {
@@ -266,26 +245,19 @@ html {
 }
 
 .safari-tab--active {
-  background: rgba(70, 70, 74, 0.6);
-}
-
-:root .safari-tab--active {
-  background: rgba(69, 69, 69, 0.6);
+  background: var(--muted);
+  border: 0.5px solid var(--border);
 }
 
 .safari-tab-title {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
-  color: rgba(171, 178, 191, 0.85);
+  color: var(--muted-foreground);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-}
-
-:root .safari-tab-title {
-  color: rgba(248, 248, 242, 0.85);
 }
 
 /* Toolbar */
@@ -294,15 +266,10 @@ html {
   align-items: center;
   height: 40px;
   padding: 0 12px;
-  background: linear-gradient(180deg, rgba(44, 44, 46, 0.55) 0%, rgba(36, 36, 38, 0.6) 100%);
-  border-bottom: 0.5px solid rgba(171, 178, 191, 0.06);
+  background: var(--muted);
+  border-bottom: 0.5px solid var(--border);
   gap: 10px;
   flex-shrink: 0;
-}
-
-:root .safari-toolbar {
-  background: linear-gradient(180deg, rgba(54, 54, 54, 0.7) 0%, rgba(46, 46, 46, 0.75) 100%);
-  border-bottom: 0.5px solid rgba(248, 248, 242, 0.06);
 }
 
 .safari-nav-group {
@@ -317,7 +284,8 @@ html {
   height: 28px;
   border: none;
   background: transparent;
-  color: rgba(171, 178, 191, 0.3);
+  color: var(--muted-foreground);
+  opacity: 0.4;
   cursor: default;
   display: flex;
   align-items: center;
@@ -327,24 +295,12 @@ html {
 }
 
 .safari-nav-btn:enabled {
-  color: rgba(171, 178, 191, 0.65);
+  opacity: 0.7;
   cursor: pointer;
 }
 
 .safari-nav-btn:enabled:hover {
-  background: rgba(171, 178, 191, 0.08);
-}
-
-:root .safari-nav-btn {
-  color: rgba(248, 248, 242, 0.3);
-}
-
-:root .safari-nav-btn:enabled {
-  color: rgba(248, 248, 242, 0.65);
-}
-
-:root .safari-nav-btn:enabled:hover {
-  background: rgba(248, 248, 242, 0.08);
+  background: var(--border);
 }
 
 .safari-url-bar {
@@ -353,8 +309,8 @@ html {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  background: rgba(171, 178, 191, 0.06);
-  border: 0.5px solid rgba(171, 178, 191, 0.08);
+  background: var(--background);
+  border: 0.5px solid var(--border);
   border-radius: 8px;
   padding: 0 14px;
   height: 28px;
@@ -363,33 +319,22 @@ html {
   min-width: 0;
 }
 
-:root .safari-url-bar {
-  background: rgba(248, 248, 242, 0.06);
-  border: 0.5px solid rgba(248, 248, 242, 0.08);
-}
-
 .safari-lock-icon {
-  color: rgba(171, 178, 191, 0.35);
+  color: var(--muted-foreground);
+  opacity: 0.4;
   flex-shrink: 0;
-}
-
-:root .safari-lock-icon {
-  color: rgba(248, 248, 242, 0.35);
 }
 
 .safari-url-text {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   font-size: 0.72rem;
-  color: rgba(171, 178, 191, 0.5);
+  color: var(--muted-foreground);
+  opacity: 0.6;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
   letter-spacing: 0.01em;
-}
-
-:root .safari-url-text {
-  color: rgba(248, 248, 242, 0.5);
 }
 
 .safari-actions {
@@ -404,7 +349,8 @@ html {
   height: 28px;
   border: none;
   background: transparent;
-  color: rgba(171, 178, 191, 0.45);
+  color: var(--muted-foreground);
+  opacity: 0.5;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -412,21 +358,12 @@ html {
   border-radius: 5px;
   padding: 0;
   text-decoration: none;
-  transition: color 0.15s, background 0.15s;
+  transition: opacity 0.15s, background 0.15s;
 }
 
 .safari-action-btn:hover {
-  color: rgba(171, 178, 191, 0.8);
-  background: rgba(171, 178, 191, 0.08);
-}
-
-:root .safari-action-btn {
-  color: rgba(248, 248, 242, 0.45);
-}
-
-:root .safari-action-btn:hover {
-  color: rgba(248, 248, 242, 0.8);
-  background: rgba(248, 248, 242, 0.08);
+  opacity: 0.85;
+  background: var(--border);
 }
 
 /* Body */
@@ -507,7 +444,7 @@ html {
   background: var(--background);
   color: var(--foreground);
   padding: 2rem;
-  font-family: 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
 }
 
 .admin-panel h1 {
@@ -790,5 +727,25 @@ html {
 .modal-leave-to .safari-window {
   transform: scale(0.95) translateY(10px);
   opacity: 0;
+}
+
+/* ── Splash Screen ────────────────────────────────────────── */
+.splash-enter-active,
+.splash-leave-active {
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.splash-enter-from,
+.splash-leave-to {
+  opacity: 0;
+}
+
+.splash-blink {
+  animation: splash-blink 0.8s step-end infinite;
+}
+
+@keyframes splash-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 </style>
