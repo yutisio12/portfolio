@@ -10,6 +10,10 @@ const selectedProject = ref<{ name: string; link: string } | null>(null);
 const iframeError = ref(false);
 const iframeLoading = ref(false);
 
+const splashVisible = ref(true);
+const bootMessages = ref<string[]>([]);
+const bootProgress = ref(0);
+
 const isDark = ref(true);
 
 const toggleTheme = () => {
@@ -71,6 +75,24 @@ const handleIframeLoad = () => {
 };
 
 onMounted(async () => {
+  const startTime = Date.now();
+
+  const bootSequence = [
+    { text: 'Initializing environment...', delay: 300, progress: 15 },
+    { text: 'Loading core modules...', delay: 800, progress: 35 },
+    { text: 'Mounting components...', delay: 1300, progress: 55 },
+    { text: 'Establishing connections...', delay: 1800, progress: 75 },
+    { text: 'Compiling assets...', delay: 2300, progress: 90 },
+    { text: 'Ready.', delay: 2800, progress: 100 },
+  ];
+
+  bootSequence.forEach((step) => {
+    setTimeout(() => {
+      bootMessages.value.push(step.text);
+      bootProgress.value = step.progress;
+    }, step.delay);
+  });
+
   try {
     const res = await fetch("/data.json");
     data.value = await res.json();
@@ -96,6 +118,14 @@ onMounted(async () => {
         console.error("Failed to scrape github stats", err);
       }
     }
+
+    const elapsed = Date.now() - startTime;
+    const minSplash = 3800;
+    const remaining = Math.max(0, minSplash - elapsed);
+
+    setTimeout(() => {
+      splashVisible.value = false;
+    }, remaining);
   }
 });
 
@@ -156,7 +186,7 @@ const getTechIconUrl = (name: string) => {
 };
 
 const heroLineColor = computed(() => {
-  return isDark.value ? '#E06C75' : '#F92672';
+  return isDark.value ? '#F92672' : '#D8315B';
 });
 </script>
 
@@ -180,6 +210,65 @@ const heroLineColor = computed(() => {
         <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
       </svg>
     </button>
+
+    <!-- Splash Screen -->
+    <Transition name="splash">
+      <div
+        v-if="splashVisible"
+        class="fixed inset-0 z-[9999] flex items-center justify-center bg-background overflow-hidden"
+      >
+        <!-- Dark: Terminal Splash -->
+        <div v-if="isDark" class="w-full max-w-xl mx-6">
+          <div class="border border-border">
+            <div class="flex items-center gap-2 px-4 py-2.5 bg-muted border-b border-border">
+              <div class="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
+              <div class="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
+              <div class="w-3 h-3 rounded-full bg-[#28C840]"></div>
+              <span class="ml-3 text-xs font-mono-accent text-muted-foreground tracking-wide">bash — portfolio</span>
+            </div>
+            <div class="p-6 bg-card min-h-[280px]">
+              <div class="space-y-2.5">
+                <div class="flex items-center gap-2 text-sm font-mono-accent">
+                  <span class="text-accent">$</span>
+                  <span class="text-foreground/90">./boot.sh —profile=yutisio</span>
+                </div>
+                <div
+                  v-for="(msg, i) in bootMessages"
+                  :key="i"
+                  class="flex items-start gap-3 text-sm font-mono-accent"
+                >
+                  <span class="text-muted-foreground shrink-0 w-5 text-right tabular-nums">{{ String(i + 1).padStart(2, '0') }}</span>
+                  <span class="text-foreground/80">{{ msg }}</span>
+                  <span
+                    v-if="i === bootMessages.length - 1"
+                    class="w-2 h-[1.1em] bg-foreground splash-blink inline-block"
+                  ></span>
+                </div>
+              </div>
+              <div class="mt-10 w-full h-[1px] bg-border">
+                <div
+                  class="h-full bg-primary transition-all duration-500 ease-out"
+                  :style="{ width: bootProgress + '%' }"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Light: Brand Splash -->
+        <div v-else class="text-center px-6">
+          <h1
+            class="text-7xl sm:text-8xl md:text-9xl font-heading uppercase text-foreground tracking-tight leading-none"
+          >YUTISIO</h1>
+          <div
+            class="h-[2px] bg-primary mt-8 mx-auto transition-all duration-700 ease-out"
+            :style="{ width: bootProgress > 0 ? Math.max(30, bootProgress * 0.7) + '%' : '0%', maxWidth: '320px' }"
+          ></div>
+          <p class="mt-8 text-xs font-mono-accent text-primary tracking-[0.3em] uppercase min-h-[1.2em]">
+            {{ bootMessages[bootMessages.length - 1] || 'loading...' }}
+          </p>
+        </div>
+      </div>
+    </Transition>
 
     <div v-if="loading" class="flex items-center justify-center min-h-screen">
       <div
@@ -588,7 +677,7 @@ const heroLineColor = computed(() => {
               class="w-full overflow-x-auto overflow-y-hidden pt-8 border-t border-border mt-8"
             >
               <img
-                :src="`https://ghchart.rshah.org/${isDark ? (data.theme_dark && data.theme_dark.primary ? data.theme_dark.primary.replace('#', '') : '61AFEF') : (data.theme_light && data.theme_light.primary ? data.theme_light.primary.replace('#', '') : '66D9EF')}/${data.github_calendar.username}`"
+                :src="`https://ghchart.rshah.org/${isDark ? (data.theme_dark && data.theme_dark.primary ? data.theme_dark.primary.replace('#', '') : '66D9EF') : (data.theme_light && data.theme_light.primary ? data.theme_light.primary.replace('#', '') : '3E92CC')}/${data.github_calendar.username}`"
                 alt="GitHub Contributions Calendar"
                 class="min-w-[700px] w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity"
               />
