@@ -47,41 +47,41 @@
   }
 
   .dark {
-    --background: #272822;
-    --foreground: #F8F8F2;
+    --background: #282828;
+    --foreground: #EBDBB2;
 
-    --muted: #2D2D28;
-    --muted-foreground: #75715E;
+    --muted: #1D2021;
+    --muted-foreground: #928374;
 
-    --popover: #1E1E1A;
-    --popover-foreground: #F8F8F2;
+    --popover: #1D2021;
+    --popover-foreground: #EBDBB2;
 
-    --card: #292923;
-    --card-foreground: #F8F8F2;
+    --card: #1D2021;
+    --card-foreground: #EBDBB2;
 
-    --border: #373730;
-    --input: #373730;
+    --border: #504945;
+    --input: #504945;
 
-    --primary: #66D9EF;
-    --primary-foreground: #272822;
+    --primary: #458588;
+    --primary-foreground: #EBDBB2;
 
-    --secondary: #F92672;
-    --secondary-foreground: #272822;
+    --secondary: #CC241D;
+    --secondary-foreground: #EBDBB2;
 
-    --destructive: #FD971F;
-    --destructive-foreground: #272822;
+    --destructive: #CC241D;
+    --destructive-foreground: #EBDBB2;
 
-    --accent: #E6DB74;
-    --accent-foreground: #272822;
+    --accent: #D65D0E;
+    --accent-foreground: #EBDBB2;
 
-    --warning: #A6E22E;
-    --warning-foreground: #272822;
+    --warning: #D79921;
+    --warning-foreground: #1D2021;
 
-    --chart-1: #AE81FF;
+    --chart-1: #98971A;
 
-    --highlight: #F92672;
+    --highlight: #D65D0E;
 
-    --ring: #66D9EF;
+    --ring: #458588;
 
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
     color-scheme: dark;
@@ -112,7 +112,7 @@
   }
 
   .dark .text-stroke-1 {
-    -webkit-text-stroke: 1px rgba(248, 248, 242, 0.3);
+    -webkit-text-stroke: 1px rgba(235, 219, 178, 0.25);
   }
 
   .text-stroke-2 {
@@ -120,7 +120,7 @@
   }
 
   .dark .text-stroke-2 {
-    -webkit-text-stroke: 2px rgba(248, 248, 242, 0.4);
+    -webkit-text-stroke: 2px rgba(235, 219, 178, 0.35);
   }
 
   .vignette-glow {
@@ -128,6 +128,6 @@
   }
 
   .dark .vignette-glow {
-    box-shadow: inset 0 0 150px rgba(102, 217, 239, 0.08);
+    box-shadow: inset 0 0 150px rgba(214, 93, 14, 0.08);
   }
 }
