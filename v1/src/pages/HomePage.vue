@@ -30,14 +30,8 @@ watch(isDark, (val) => {
 });
 
 onMounted(() => {
-  const saved = localStorage.getItem("theme");
-  if (saved === "light") {
-    isDark.value = false;
-    document.documentElement.classList.remove("dark");
-  } else {
-    isDark.value = true;
-    document.documentElement.classList.add("dark");
-  }
+  isDark.value = true;
+  document.documentElement.classList.add("dark");
 });
 
 const openModal = (title: string, url: string) => {
@@ -186,7 +180,7 @@ const getTechIconUrl = (name: string) => {
 };
 
 const heroLineColor = computed(() => {
-  return isDark.value ? '#F92672' : '#D8315B';
+  return isDark.value ? '#D65D0E' : '#D8315B';
 });
 </script>
 
@@ -677,7 +671,7 @@ const heroLineColor = computed(() => {
               class="w-full overflow-x-auto overflow-y-hidden pt-8 border-t border-border mt-8"
             >
               <img
-                :src="`https://ghchart.rshah.org/${isDark ? (data.theme_dark && data.theme_dark.primary ? data.theme_dark.primary.replace('#', '') : '66D9EF') : (data.theme_light && data.theme_light.primary ? data.theme_light.primary.replace('#', '') : '3E92CC')}/${data.github_calendar.username}`"
+                :src="`https://ghchart.rshah.org/${isDark ? (data.theme_dark && data.theme_dark.primary ? data.theme_dark.primary.replace('#', '') : '458588') : (data.theme_light && data.theme_light.primary ? data.theme_light.primary.replace('#', '') : '3E92CC')}/${data.github_calendar.username}`"
                 alt="GitHub Contributions Calendar"
                 class="min-w-[700px] w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity"
               />

@@ -22,13 +22,13 @@ onMounted(() => {
   const particles: Array<{ x: number; y: number; radius: number; vx: number; vy: number; alpha: number; color: string }> = []
 
   const themeColors = [
-    props.isDark ? 'rgba(102, 217, 239, 1)' : 'rgba(62, 146, 204, 1)',
-    props.isDark ? 'rgba(249, 38, 114, 1)' : 'rgba(216, 49, 91, 1)',
-    props.isDark ? 'rgba(230, 219, 116, 1)' : 'rgba(30, 3, 90, 1)',
-    props.isDark ? 'rgba(253, 151, 31, 1)' : 'rgba(10, 36, 99, 1)',
-    props.isDark ? 'rgba(166, 226, 46, 1)' : 'rgba(216, 49, 91, 1)',
-    props.isDark ? 'rgba(174, 129, 255, 1)' : 'rgba(62, 146, 204, 1)',
-    props.isDark ? 'rgba(248, 248, 242, 1)' : 'rgba(255, 250, 255, 1)',
+    props.isDark ? 'rgba(215, 153, 33, 1)' : 'rgba(62, 146, 204, 1)',
+    props.isDark ? 'rgba(204, 36, 29, 1)' : 'rgba(216, 49, 91, 1)',
+    props.isDark ? 'rgba(214, 93, 14, 1)' : 'rgba(30, 3, 90, 1)',
+    props.isDark ? 'rgba(69, 133, 136, 1)' : 'rgba(10, 36, 99, 1)',
+    props.isDark ? 'rgba(152, 151, 26, 1)' : 'rgba(216, 49, 91, 1)',
+    props.isDark ? 'rgba(146, 131, 116, 1)' : 'rgba(62, 146, 204, 1)',
+    props.isDark ? 'rgba(235, 219, 178, 1)' : 'rgba(255, 250, 255, 1)',
   ]
 
   for (let i = 0; i < 150; i++) {
